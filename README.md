@@ -1,20 +1,21 @@
+# Trabajo Tarjeta: Versión 2018
 
 El siguiente trabajo es un enunciado iterativo. Todas las semanas nuevos
 requerimientos serán agregados y/o modificados para ilustrar la dinámica de
 desarrollo de software.
 
-# Iteracion 1. (31 de Julio al 14 de Agosto)
+## Iteracion 1. (31 de Julio al 14 de Agosto)
 
-Escribir un programa con programación orientada a objetos que permita illustrar
+Escribir un programa con programación orientada a objetos que permita ilustrar
 el funcionamiento del transporte urbano de pasajeros de la ciudad de rosario.
 
-Las clases que interactuan en la simulación son: Colectivo. Tarjeta y Boleto.
+Las clases que interactuan en la simulación son: Colectivo, Tarjeta y Boleto.
 
 Cuando un usuario viaja en colectivo con una tarjeta, obtiene un boleto como
 resultado de la operación $coletivo->pagarCon($tarjeta);
 
 
-Para esta semana se consideran los siguientes supuestos:
+Para esta iteracion se consideran los siguientes supuestos:
 
 - No hay medio boleto de ningun tipo.
 - No hay transbordos.
@@ -30,7 +31,8 @@ Se pide:
 - Implementar el código de las clases Tarjeta, Colectivo y Boleto.
 - Hacer que el test Boleto.php funcione correctamente con todos los montos de pago listados.
 - Conectar el repositorio con travis-ci para que los tests se ejecuten automaticamente en cada commit.
+- Enviar el enlace del repositorio al mail del profesor con los integrantes del grupo: **dos por grupo.**
 
-# Iteracion 2. (14 de Agosto al 28 de Agosto)
+## Iteracion 2. (14 de Agosto al 28 de Agosto)
 
 ... Próximamente :)
