@@ -33,6 +33,22 @@ Se pide:
 - Conectar el repositorio con travis-ci para que los tests se ejecuten automaticamente en cada commit.
 - Enviar el enlace del repositorio al mail del profesor con los integrantes del grupo: **dos por grupo.**
 
+
+Para instalar el codigo inicial clonar el repositorio y luego ejecutar:
+
+```
+composer install
+```
+
+En caso de no contar con composer instalado, descargarlo desde: https://getcomposer.org/
+
+Para correr los tests:
+
+```
+./vendor/bin/phpunit
+```
+
+
 ## Iteracion 2. (14 de Agosto al 28 de Agosto)
 
 ... Próximamente :)
