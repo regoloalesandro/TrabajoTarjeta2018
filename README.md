@@ -28,7 +28,7 @@ Se pide:
 
 - Hacer un fork del repositorio.
 - Implementar el código de las clases Tarjeta, Colectivo y Boleto.
-- Hacer que el test Boleto.php funcione correctamente con todos.
+- Hacer que el test Boleto.php funcione correctamente con todos los montos de pago listados.
 - Conectar el repositorio con travis-ci para que los tests se ejecuten automaticamente en cada commit.
 
 # Iteracion 2. (14 de Agosto al 28 de Agosto)
