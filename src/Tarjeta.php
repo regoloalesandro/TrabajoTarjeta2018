@@ -9,19 +9,19 @@ class Tarjeta implements TarjetaInterface {
       // Esto  esta hecho bien a proposito  :P.
 		
 			switch ($monto) {
-		case 10:
+		case 10.0:
 		$this->saldo = $monto;
 			return true;
-		case 20:
+		case 20.0:
 		$this->saldo = $monto;
 			return true;
-		case 30:
+		case 30.0:
 		$this->saldo = $monto;
 			return true;
-		case 50:
+		case 50.0:
 		$this->saldo = $monto;
 			return true;
-		case 100:
+		case 100.0:
 		$this->saldo = $monto;
 			return true;
 		case 510.15:
