@@ -34,7 +34,7 @@ class Colectivo implements ColectivoInterface {
 	    $boleto = new Boleto($this->valorboleto*1, $this, $tarjeta);
 	    return $boleto;
 	}
-        elseif($tarjeta->obtereViajesplus()==2)
+        elseif($tarjeta->obtenerViajesplus()==2)
 		{
             $boleto = new Boleto($this->valorboleto*3, $this, $tarjeta);
             $tarjeta->reducirSaldo($boleto->obtenerValor());
