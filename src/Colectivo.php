@@ -42,13 +42,13 @@ class Colectivo implements ColectivoInterface {
  		return $boleto;
 
         	}
-	elseif($tarjeta->obtereViajesplus() == 1){
+	elseif($tarjeta->obtenerViajesplus() == 1){
 	    $boleto = new Boleto($this->valorboleto*2, $this, $tarjeta);
             $tarjeta->reducirSaldo($boleto->obtenerValor());
  	    $tarjeta->quitarplus(1);           	
  		return $boleto;
 	}
-        elseif ($tarjeta->obtereViajesplus() == 0){
+        elseif ($tarjeta->obtenerViajesplus() == 0){
 	    $boleto = new Boleto($this->valorboleto, $this, $tarjeta);
             $tarjeta->reducirSaldo($boleto->obtenerValor());
  	    $tarjeta->quitarplus(0);           	
