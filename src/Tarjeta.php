@@ -54,9 +54,9 @@ class Tarjeta implements TarjetaInterface {
 	}
 
 	public function plus(){
-		$this->viajep += 1
+		$this->viajep += 1;
 	}
 	public function quitarplus($cantidad){
-		$this->viajep -= $cantidad	
+		$this->viajep -= $cantidad;	
 	}
 }
