@@ -55,7 +55,7 @@ class Colectivo implements ColectivoInterface {
  		return $boleto;
 	}
         else {
-			return false;
+		return False;
 	}
     }
 

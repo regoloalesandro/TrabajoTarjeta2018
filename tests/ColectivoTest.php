@@ -21,7 +21,7 @@ class ColectivoTest extends TestCase {
 	$boleto = new Boleto(14.80, $colectivo, $tarjeta);
         $this->assertEquals($colectivo->pagarCon($tarjeta), $boleto);
 	$this->assertEquals($colectivo->pagarCon($tarjeta), $boleto);
-	$this->assertEquals($colectivo->pagarCon($tarjeta), false);
+	$this->assertEquals($colectivo->pagarCon($tarjeta), False);
 
    
     }
