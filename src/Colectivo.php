@@ -28,7 +28,7 @@ class Colectivo implements ColectivoInterface {
     }
 
     public function pagarCon(TarjetaInterface $tarjeta){
-        if ($tarjeta->obtenerSaldo() <= $this->valorboleto && $tarjeta->viajep < 3 )
+        if ($tarjeta->obtenerSaldo() <= $this->valorboleto && $tarjeta->obtenerViajesplus() < 3 )
 	{
             $tarjeta->plus();
 	    $boleto = new Boleto($this->valorboleto*1, $this, $tarjeta);
