@@ -28,17 +28,13 @@ class Colectivo implements ColectivoInterface {
     }
 
     public function pagarCon(TarjetaInterface $tarjeta){
-        if ($tarjeta->obtenerSaldo() <= $this->valorboleto && $tarjeta->obtenerViajesplus() == 2 )
+        if ($tarjeta->obtenerSaldo() <= $this->valorboleto && $tarjeta->obtenerViajesplus() < 3 )
 	{
-	    return false;
+            $tarjeta->plus();
+	    $boleto = new Boleto($this->valorboleto*1, $this, $tarjeta);
+	    return $boleto;
 	}
-	elseif($tarjeta->obtenerSaldo() <= $this->valorboleto && $tarjeta->obtenerViajesplus()<2){
-		$tarjeta->plus();
-		$boleto = new Boleto($this->valorboleto, $this, $tarjeta);		
-		return $boleto;
-
-	}
-        elseif(tarjeta->obtenerSaldo() >= $this->valorboleto && $tarjeta->obtenerViajesplus()==2)
+        elseif($tarjeta->obtenerViajesplus()==2)
 		{
             $boleto = new Boleto($this->valorboleto*3, $this, $tarjeta);
             $tarjeta->reducirSaldo($boleto->obtenerValor());
@@ -46,17 +42,20 @@ class Colectivo implements ColectivoInterface {
  		return $boleto;
 
         	}
-	elseif(tarjeta->obtenerSaldo() >= $this->valorboleto && $tarjeta->obtenerViajesplus() == 1){
+	elseif($tarjeta->obtenerViajesplus() == 1){
 	    $boleto = new Boleto($this->valorboleto*2, $this, $tarjeta);
             $tarjeta->reducirSaldo($boleto->obtenerValor());
  	    $tarjeta->quitarplus(1);           	
  		return $boleto;
 	}
-        elseif (tarjeta->obtenerSaldo() >= $this->valorboleto && $tarjeta->obtenerViajesplus() == 0){
+        elseif ($tarjeta->obtenerViajesplus() == 0){
 	    $boleto = new Boleto($this->valorboleto, $this, $tarjeta);
             $tarjeta->reducirSaldo($boleto->obtenerValor());
  	    $tarjeta->quitarplus(0);           	
  		return $boleto;
+	}
+        else {
+		return FALSE;
 	}
     }
 
