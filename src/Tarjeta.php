@@ -3,9 +3,13 @@
 namespace TrabajoTarjeta;
 
 class Tarjeta implements TarjetaInterface {
-    protected $saldo;
+	protected $saldo;
 
-    public function recargar($monto) {
+	public function __construct() {
+        $this->saldo = 0.0;
+    }
+  
+  public function recargar($monto) {
       // Esto  esta hecho bien a proposito  :P.
 		
 			switch ($monto) {
@@ -34,10 +38,7 @@ class Tarjeta implements TarjetaInterface {
 		
 			return false;
 }
-
-
-    
-   }
+}
 
     /**
      * Devuelve el saldo que le queda a la tarjeta.
@@ -46,6 +47,9 @@ class Tarjeta implements TarjetaInterface {
      */
     public function obtenerSaldo() {
       return $this->saldo;
-    }
+	}
 
+	public function reducirSaldo($valor){
+		$this->saldo -= $valor;
+	}
 }
