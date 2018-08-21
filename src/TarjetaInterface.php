@@ -21,7 +21,7 @@ interface TarjetaInterface {
      * @return float
      */
     public function obtenerSaldo();
-    public function obtenerViajeplis();
+    public function obtenerViajeplus();
     public function plus();
     public function quitarplus($cantidad);
 
