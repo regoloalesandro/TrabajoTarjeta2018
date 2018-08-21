@@ -46,4 +46,8 @@ class Tarjeta implements TarjetaInterface {
     public function obtenerSaldo() {
       return $this->saldo;
 	}
+
+	public function reducirSaldo($valor){
+		$this->saldo -= $valor;
+	}
 }
