@@ -4,7 +4,7 @@ namespace TrabajoTarjeta;
 
 class Tarjeta implements TarjetaInterface {
 	protected $saldo;
-
+	protected $viajep = 0;
 	public function __construct() {
         $this->saldo = 0.0;
     }
@@ -50,5 +50,13 @@ class Tarjeta implements TarjetaInterface {
 
 	public function reducirSaldo($valor){
 		$this->saldo -= $valor;
+
+	}
+
+	public function plus(){
+		$this->viajep += 1
+	}
+	public function quitarplus($cantidad){
+		$this->viajep -= $cantidad	
 	}
 }
