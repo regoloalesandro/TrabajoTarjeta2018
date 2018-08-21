@@ -28,25 +28,27 @@ class Colectivo implements ColectivoInterface {
     }
 
     public function pagarCon(TarjetaInterface $tarjeta){
-        if ($tarjeta->obtenerSaldo() <= $valorboleto && $tarjeta->viajep < 3 ){
+        if ($tarjeta->obtenerSaldo() <= $valorboleto && $tarjeta->viajep < 3 )
+	{
             $tarjeta->plus();
 	    $boleto = new Boleto($valorboleto*1, $this, $tarjeta);
 	    return $boleto;
 	}
-        else if($tarjeta->viajep == 2){
+        elseif($tarjeta->viajep == 2)
+		{
             $boleto = new Boleto($valorboleto*3, $this, $tarjeta);
             $tarjeta->reducirSaldo($boleto->obtenerValor());
  	    $tarjeta->quitarplus(2);           	
  		return $boleto;
 
-        }
-	else if($tarjeta->viajep == 1){
+        	}
+	elseif($tarjeta->viajep == 1){
 	    $boleto = new Boleto($valorboleto*2, $this, $tarjeta);
             $tarjeta->reducirSaldo($boleto->obtenerValor());
  	    $tarjeta->quitarplus(1);           	
  		return $boleto;
 	}
-        else if ($tarjeta->viajep == 0){
+        elseif ($tarjeta->viajep == 0){
 	    $boleto = new Boleto($valorboleto, $this, $tarjeta);
             $tarjeta->reducirSaldo($boleto->obtenerValor());
  	    $tarjeta->quitarplus(0);           	
