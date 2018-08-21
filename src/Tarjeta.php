@@ -52,6 +52,9 @@ class Tarjeta implements TarjetaInterface {
 		$this->saldo -= $valor;
 
 	}
+	public function obtenerViajesplus(){
+		return $this->viajep;
+	}
 
 	public function plus(){
 		$this->viajep += 1;
