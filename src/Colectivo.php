@@ -32,7 +32,7 @@ class Colectivo implements ColectivoInterface {
         }
         else{
             $boleto = new Boleto(14.80, $this, $tarjeta);
-            $tarjeta->reducirSaldo($boleto->valor);
+            $tarjeta->reducirSaldo($boleto->obtenerValor());
             return $boleto;
         }
     }
