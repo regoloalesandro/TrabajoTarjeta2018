@@ -2,7 +2,7 @@
 
 namespace TrabajoTarjeta;
 
-class MedioVoleto extends  Tarjeta {
+class Mediovoleto extends  Tarjeta {
 	protected $franquicia= 2;
 
 	public function reducirSaldo($valor){

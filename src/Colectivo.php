@@ -91,6 +91,10 @@ class Colectivo implements ColectivoInterface {
  
 		}		
 	}
+	elseif ($tarjeta->franquicia == 0){
+		$boleto = new Boleto(0.0,$this,$tarjeta);		
+	return $boleto; 	
+	}
     }
 
 }
