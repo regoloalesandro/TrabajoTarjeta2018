@@ -2,7 +2,7 @@
 
 namespace TrabajoTarjeta;
 
-class Jubilado extends  Tarjeta {
+class Jubilados extends  Tarjeta {
 	public $franquicia= 0;
 
 
