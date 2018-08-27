@@ -13,7 +13,7 @@ class ColectivoTest extends TestCase {
         $boleto = new Boleto(14.80, $colectivo, $tarjeta);
         $this->assertEquals( $colectivo->pagarCon($tarjeta) , $boleto);
 	$medio = new Medioboleto();
-	$medio-recardar(100.0);
+	$medio-recargar(100.0);
 	$boleto2 = new Boleto(7.40, $colectivo, $medio);
         $this->assertEquals( $colectivo->pagarCon($medio) , $boleto2);
 	$jubi =new Jubilados();
