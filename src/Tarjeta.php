@@ -5,6 +5,7 @@ namespace TrabajoTarjeta;
 class Tarjeta implements TarjetaInterface {
 	protected $saldo;
 	protected $viajep = 0;
+	public $franquicia = 1;
 	public function __construct() {
         $this->saldo = 0.0;
     }
