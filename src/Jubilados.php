@@ -3,7 +3,13 @@
 namespace TrabajoTarjeta;
 
 class Jubilados extends  Tarjeta {
-	public $franquicia= 0;
 
+	public function valorpasaje(){
+		return 0;
+	}
+
+	public function reducirSaldo($valor){
+      	return true;
+	}
 
 }
