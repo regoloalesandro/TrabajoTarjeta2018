@@ -11,5 +11,5 @@ class Jubilados extends  Tarjeta {
 	public function reducirSaldo($valor){
       	return true;
 	}
-
+	
 }
