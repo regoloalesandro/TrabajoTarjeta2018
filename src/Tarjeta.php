@@ -5,7 +5,6 @@ namespace TrabajoTarjeta;
 class Tarjeta implements TarjetaInterface {
 	protected $saldo;
 	protected $viajep = 0;
-	public $franquicia = 1;
 	public function __construct() {
         $this->saldo = 0.0;
     }
@@ -48,10 +47,35 @@ class Tarjeta implements TarjetaInterface {
     public function obtenerSaldo() {
       return $this->saldo;
 	}
+	public function valorpasaje(){
+		return $this->pasaje;
+	}
 
 	public function reducirSaldo($valor){
-		$this->saldo -= $valor;
+		if($this->saldo>$valor && $this->viajep == 0){
+			$this->saldo -=$valor;
+			$this->pasaje =$valor;
+			}
+		if($this->saldo>$valor && $this->viajep == 1){
+			$this->saldo -=$valor*2;
+			$this->quitarplus(1);
+			$this->pasaje =$valor*2;
+		}
+		if($this->saldo>$valor && $this->viajep == 2){
+			$this->saldo -=$valor*3;
+			$this->quitarplus(2);
+			$this->pasaje =$valor*3;
+		}
 
+		if($this->saldo<$valor && $this->viajep <2)
+		{
+			$this->plus();
+			$this->pasaje =$valor;
+		}
+		elseif($this->viajep == 2){
+			return false;
+		}
+		return true;
 	}
 	public function obtenerViajesplus(){
 		return $this->viajep;
