@@ -8,10 +8,30 @@ class Boleto implements BoletoInterface {
 
     protected $colectivo;
 
-    public function __construct($valor, $colectivo, $tarjeta) {
+    protected $id;
+    
+    protected $saldo;
+
+    protected $linea;
+
+    protected $tipodetarjeta;
+
+    protected $viajesplus;
+
+    protected $fecha;
+
+    protected $abonadoenviajesplus
+
+    public function __construct($valor, $colectivo, $tarjeta,$id,$linea,$tipodetarjeta,$viajesplus,$abonadoenviajesplus,$fecha) {
         $this->valor = $valor;
         $this->colectivo = $colectivo;
         $this->tarjeta = $tarjeta;
+        $this->id=$id;
+        $this->linea=$linea;
+        $this->tipodetarjeta=$tipodetarjeta;
+        $this->viajesplus=$viajesplus;
+        $this->fecha=$fecha;
+        $this->abonadoenviajesplus=$abonadoenviajesplus;
     }
 
     /**
@@ -31,5 +51,31 @@ class Boleto implements BoletoInterface {
     public function obtenerColectivo() {
         return $this->colectivo;
     }
+    public function obtenersaldo(){
+        return $this->saldo;
+    }
+    public function obtenerLineadelcolectivo(){
+        return $this->Linea;
+    }
+    public function obtenertipodetarjeta(){
+       return $this->tipodetarjeta;
+
+    }
+    public function obteneriID(){
+        return $this->id;
+ 
+     }
+     //si viajesplus es 1 o 2 significa que pago ademas del boleto, la respectiva cantidad de pluses
+     //si es -1 pago con un viaje plus y no con su saldo.
+     public function viajesplus(){
+        return $this->viajesplus;
+     }
+     public function obtenerfecha(){
+         return $this->fecha;
+     }
+     //totoal correspondiente abonado en viajes plus ademas del boleto, si es -1 signidia que pago con plus
+     public function abonadoenviajesplus(){
+         return $this->abonadoenviajesplus;
+     }
 
 }
