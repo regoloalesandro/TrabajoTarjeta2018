@@ -20,7 +20,7 @@ class Boleto implements BoletoInterface {
 
     protected $fecha;
 
-    protected $abonadoenviajesplus
+    protected $abonadoenviajesplus;
 
     public function __construct($valor, $colectivo, $tarjeta,$id,$linea,$tipodetarjeta,$viajesplus,$abonadoenviajesplus,$fecha) {
         $this->valor = $valor;
