@@ -35,11 +35,11 @@ class ColectivoTest extends TestCase {
 
         $tarjeta->recargar(100.0);
         
-        $boleto = new Boleto(44.4, $colectivo, $tarjeta, $tarjeta->obtenerID(), $colectivo->linea(), get_class($tarjeta), $tarjeta->obtenerViajesplusAbonados(), $tarjeta->valordelospasajesplus(), date("d/m/Y H:i", time()));
+        $boleto2 = new Boleto(44.4, $colectivo, $tarjeta, $tarjeta->obtenerID(), $colectivo->linea(), get_class($tarjeta), $tarjeta->obtenerViajesplusAbonados(), $tarjeta->valordelospasajesplus(), date("d/m/Y H:i", time()));
         $this->assertEquals( $colectivo->pagarCon($tarjeta) , $boleto2);
         
 	$medio = new Medioboleto();
-        $boleto = new Boleto(7.40, $colectivo, $tarjeta, $tarjeta->obtenerID(), $colectivo->linea(), get_class($tarjeta), $tarjeta->obtenerViajesplusAbonados(), $tarjeta->valordelospasajesplus(), date("d/m/Y H:i", time()));
+        $boleto3 = new Boleto(7.40, $colectivo, $tarjeta, $tarjeta->obtenerID(), $colectivo->linea(), get_class($tarjeta), $tarjeta->obtenerViajesplusAbonados(), $tarjeta->valordelospasajesplus(), date("d/m/Y H:i", time()));
 	$this->assertEquals( $colectivo->pagarCon($medio) , $boleto3);
     }
 }
