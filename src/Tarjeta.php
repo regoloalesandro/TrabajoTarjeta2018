@@ -78,8 +78,7 @@ class Tarjeta implements TarjetaInterface {
 			$this->viajesplusquepago=2;
 		}
 
-		if($this->saldo<$valor && $this->viajep <2)
-		{
+		if($this->saldo<$valor && $this->viajep <2){
 			$this->plus();
 			$this->pasaje =$valor;
 			$this->viajesplusquepago=-1;			
