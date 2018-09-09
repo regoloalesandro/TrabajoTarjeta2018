@@ -3,7 +3,6 @@
 namespace TrabajoTarjeta;
 
 class Medioboleto extends  Tarjeta {
-
 	public function reducirSaldo($valor){
 		$this->pasajeestandar=$valor/2;
 

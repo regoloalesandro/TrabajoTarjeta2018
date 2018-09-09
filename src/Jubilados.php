@@ -3,8 +3,8 @@
 namespace TrabajoTarjeta;
 
 class Jubilados extends  Tarjeta {
-
 	protected $pasajeestandar=0;
+	
 	public function valorpasaje(){
 		return 0;
 	}
