@@ -71,11 +71,12 @@ class Boleto implements BoletoInterface {
         return $this->viajesplus;
      }
      public function obtenerfecha(){
-         return $this->fecha;
+        return $this->fecha;
      }
-     //totoal correspondiente abonado en viajes plus ademas del boleto, si es -1 signidia que pago con plus
+
+     //total correspondiente abonado en viajes plus ademas del boleto, si es -1 significa que pago con plus
      public function abonadoenviajesplus(){
-         return $this->abonadoenviajesplus;
+        return $this->abonadoenviajesplus;
      }
 
 }
