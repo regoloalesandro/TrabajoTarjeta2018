@@ -3,7 +3,7 @@
 namespace TrabajoTarjeta;
 
 class Medioboleto extends  Tarjeta {
-	protected $ultviaje;
+	public $ultviaje;
 
 	public function reducirSaldo($valor){
 		$this->pasajeestandar=$valor/2;
