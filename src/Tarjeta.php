@@ -6,7 +6,7 @@ class Tarjeta implements TarjetaInterface {
 	protected $saldo;
 	protected $viajep = 0;
 	protected $id;
-	protected $viajesplusquepago=0;
+	protected $viajesplusquepago;
 	protected $pasajeestandar;
 
 	public function __construct() {
