@@ -9,7 +9,7 @@ class Medioboleto extends  Tarjeta {
 		$this->pasajeestandar=$valor/2;
 		
 		//Si el ultimo viaje fue realizado el dia de la fecha
-		if($this->ultviaje['year'] == getdate(time())['year'] && $this->ultviaje['mon'] == getdate(time())['mon'] && $this->ultviaje[mday] == getdate(time())[mday]){
+		if($this->ultviaje['year'] == getdate(time())['year'] && $this->ultviaje['mon'] == getdate(time())['mon'] && $this->ultviaje['mday'] == getdate(time())['mday']){
 			//Si fue realizado en la misma "hora"
 			if($this->ultviaje['hours'] == getdate(time())['hours']){
 				if($this->ultviaje['minutes'] <= getdate(time())['minutes']-5 ){
