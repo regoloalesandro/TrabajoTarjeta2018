@@ -34,7 +34,6 @@ class TarjetaTest extends TestCase {
         $medio->recargar(100.0);
 
         $medio->reducirSaldo(14.80);
-        $this->assertEquals($medio->ultviaje, getdate( time() ));
         $this->assertFalse($medio->reducirSaldo(14.80));
     }
 }

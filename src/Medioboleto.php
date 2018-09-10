@@ -3,10 +3,15 @@
 namespace TrabajoTarjeta;
 
 class Medioboleto extends  Tarjeta {
-	public $ultviaje;
+	protected $ultviaje;
+	protected $limitdia = FALSE;
 
 	public function reducirSaldo($valor){
-		$this->pasajeestandar=$valor/2;
+		$this->pasajeestandar=$valor;
+		$valor/=2;
+		if($this->limitdia == TRUE ){
+			$valor*=2;
+		}
 		
 		//Si el ultimo viaje fue realizado el dia de la fecha
 		if($this->ultviaje['year'] == getdate(time())['year'] && $this->ultviaje['mon'] == getdate(time())['mon'] && $this->ultviaje['mday'] == getdate(time())['mday']){
@@ -22,32 +27,37 @@ class Medioboleto extends  Tarjeta {
 					return false;
 				}
 			}
+			//Si ya viajo en el dia de la fecha, este viaje sera su ultimo a mitad de valor
+			$this->limitdia = TRUE;
+		}
+		else{
+			$this->limitdia = false;
 		}
 		
 
 		if($this->saldo>$valor && $this->viajep == 0){
-			$this->saldo -=($valor/2);
-			$this->pasaje =($valor/2);
+			$this->saldo -=$valor;
+			$this->pasaje =$valor;
 			$this->viajesplusquepago=0;
 		}
 
 		if($this->saldo>$valor && $this->viajep == 1){
-			$this->saldo -=($valor/2)*2;
+			$this->saldo -=$valor*2;
 			$this->quitarplus(1);
-			$this->pasaje =($valor/2)*2;
+			$this->pasaje =$valor*2;
 			$this->viajesplusquepago=1;
 		}
 
 		if($this->saldo>$valor && $this->viajep == 2){
-			$this->saldo -=($valor/2)*3;
+			$this->saldo -=$valor*3;
 			$this->quitarplus(2);
-			$this->pasaje =($valor/2)*3;
+			$this->pasaje =$valor*3;
 			$this->viajesplusquepago=2;
 		}
 
 		if($this->saldo<$valor && $this->viajep <2){
 			$this->plus();
-			$this->pasaje =($valor/2);
+			$this->pasaje =$valor;
 			$this->viajesplusquepago=-1;
 		}
 
