@@ -8,6 +8,7 @@ class Tarjeta implements TarjetaInterface {
 	protected $id;
 	protected $viajesplusquepago;
 	protected $pasajeestandar;
+	protected $pasaje;
 
 	public function __construct() {
         $this->saldo = 0.0;
