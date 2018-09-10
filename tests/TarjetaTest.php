@@ -27,5 +27,13 @@ class TarjetaTest extends TestCase {
 
       $this->assertFalse($tarjeta->recargar(15.0));
       $this->assertEquals($tarjeta->obtenerSaldo(), 0.0);
-  }
+    }
+
+    public function testMedioBoletoLimitacionTiempo(){
+        $medio = new Medioboleto();
+        $medio->recargar(100.0);
+
+        $medio->reducirSaldo(14.80);
+        $this->assertFalse($medio->reducirSaldo(14.80));
+    }
 }
