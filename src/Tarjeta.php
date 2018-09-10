@@ -81,7 +81,7 @@ class Tarjeta implements TarjetaInterface {
 		if($this->saldo<$valor && $this->viajep <2){
 			$this->plus();
 			$this->pasaje =$valor;
-			$this->viajesplusquepago=-1;			
+			$this->viajesplusquepago = -1;			
 		}
 
 		elseif($this->viajep == 2){
@@ -114,7 +114,7 @@ class Tarjeta implements TarjetaInterface {
 		if($this->viajesplusquepago>0){
 			return $this->pasajeestandar*$this->viajesplusquepago;
 		}
-		elseif($this->viajesplusquepago== 0){
+		if($this->viajesplusquepago== 0){
 			return 0;
 		}
 		else{
