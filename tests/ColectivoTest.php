@@ -30,7 +30,7 @@ class ColectivoTest extends TestCase {
 
         $tarjeta = new Tarjeta();
 
-        $boleto = new Boleto(14.80, $colectivo, $tarjeta, $tarjeta->obtenerID(), $colectivo->linea(), get_class($tarjeta), $tarjeta->obtenerViajesplusAbonados(), $tarjeta->valordelospasajesplus(), date("d/m/Y H:i", time()));
+        $boleto = new Boleto(14.80, $colectivo, $tarjeta, $tarjeta->obtenerID(), $colectivo->linea(), get_class($tarjeta),-1, -1, date("d/m/Y H:i", time()));
 	$this->assertEquals( $colectivo->pagarCon($tarjeta) , $boleto);
 	$this->assertEquals( $colectivo->pagarCon($tarjeta) , $boleto);
 
