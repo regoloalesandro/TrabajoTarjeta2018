@@ -36,4 +36,17 @@ class TarjetaTest extends TestCase {
         $medio->reducirSaldo(14.80);
         $this->assertFalse($medio->reducirSaldo(14.80));
     }
+
+    public function testMedioBoletoLimitacionDia(){
+        $medio = new Medioboleto();
+        $medio->recargar(100.0);
+
+        $colectivo = new Colectivo(NULL, NULL, NULL);
+        $boleto = new Boleto(14.80, $colectivo, $medio, $medio->obtenerID(), $colectivo->linea(), get_class($medio), $medio->obtenerViajesplusAbonados(), $medio->valordelospasajesplus(), date("d/m/Y H:i", time()));
+        
+        $colectivo->pagarCon($medio);
+        $colectivo->pagarCon($medio);
+        $this->assertEquals( $colectivo->pagarCon($medio)->obtenerValor(), 14.80 );
+
+    }
 }
