@@ -19,7 +19,7 @@ class ColectivoTest extends TestCase {
         $medio = new Medioboleto($tiempo);
         $medio->recargar(100.0);
 	    $boleto2 = new Boleto(7.40, $colectivo, $medio, $medio->obtenerID(), $colectivo->linea(), get_class($medio), $medio->obtenerViajesplusAbonados(), $medio->valordelospasajesplus(), $tiempo);
-        $this->assertEquals( $colectivo->pagarCon($medio) , $boleto2);
+        $this->assertEquals( $colectivo->pagarCon($medio), $boleto2 );
         
         $jubi =new Jubilados($tiempo);
 	    $boleto3 = new Boleto (0,$colectivo,$jubi, $jubi->obtenerID(), $colectivo->linea(), get_class($jubi), $jubi->obtenerViajesplusAbonados(), $jubi->valordelospasajesplus(), $tiempo);
