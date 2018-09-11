@@ -16,7 +16,7 @@ class Tarjeta implements TarjetaInterface {
 		$this->tiempo = $time;
     }
 
-	public obtenerTiempo(){
+	public function obtenerTiempo(){
 		return $this->tiempo->time();
 	}
 
