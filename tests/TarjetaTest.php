@@ -41,7 +41,7 @@ class TarjetaTest extends TestCase {
     }
 
     public function testMedioBoletoLimitacionDia(){
-        $tiempo = new TiempoFalso();
+        $tiempo = new TiempoFalso(0);
         $medio = new Medioboleto($tiempo);
         $medio->recargar(100.0);
 
