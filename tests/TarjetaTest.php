@@ -11,7 +11,7 @@ class TarjetaTest extends TestCase {
      */
     public function testCargaSaldo() {
         $tiempo = new TiempoFalso();
-        $tarjeta = new Tarjeta($tiempo->time());
+        $tarjeta = new Tarjeta($tiempo);
 
         $this->assertTrue($tarjeta->recargar(10.0));
         $this->assertEquals($tarjeta->obtenerSaldo(), 10.0);
@@ -25,7 +25,7 @@ class TarjetaTest extends TestCase {
      */
     public function testCargaSaldoInvalido() {
         $tiempo = new TiempoFalso();
-        $tarjeta = new Tarjeta($tiempo->time());
+        $tarjeta = new Tarjeta($tiempo);
 
         $this->assertFalse($tarjeta->recargar(15.0));
         $this->assertEquals($tarjeta->obtenerSaldo(), 0.0);
@@ -33,7 +33,7 @@ class TarjetaTest extends TestCase {
 
     public function testMedioBoletoLimitacionTiempo(){
         $tiempo = new TiempoFalso();
-        $medio = new Medioboleto( $tiempo->time() );
+        $medio = new Medioboleto( $tiempo );
         $medio->recargar(100.0);
 
         $medio->reducirSaldo(14.80);
@@ -42,11 +42,11 @@ class TarjetaTest extends TestCase {
 
     public function testMedioBoletoLimitacionDia(){
         $tiempo = new TiempoFalso(1000);
-        $medio = new Medioboleto($tiempo->time());
+        $medio = new Medioboleto($tiempo);
         $medio->recargar(100.0);
 
         $colectivo = new Colectivo(NULL, NULL, NULL);
-        $boleto = new Boleto(14.80, $colectivo, $medio, $medio->obtenerID(), $colectivo->linea(), get_class($medio), $medio->obtenerViajesplusAbonados(), $medio->valordelospasajesplus(), $tiempo->time());
+        $boleto = new Boleto(14.80, $colectivo, $medio, $medio->obtenerID(), $colectivo->linea(), get_class($medio), $medio->obtenerViajesplusAbonados(), $medio->valordelospasajesplus(), $tiempo);
         
         $colectivo->pagarCon($medio);
         $tiempo->avanzar(500);

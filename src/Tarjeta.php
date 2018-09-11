@@ -17,8 +17,7 @@ class Tarjeta implements TarjetaInterface {
     }
 
 	public function obtenerTiempo(){
-		$tiemp = $this->tiempo;
-		return $tiemp->time();
+		return $this->tiempo;
 	}
 
     public function recargar($monto) {
