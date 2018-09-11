@@ -3,7 +3,7 @@
 namespace TrabajoTarjeta;
 
 class Medioboleto extends  Tarjeta {
-	protected $ultviaje;
+	protected $ultviaje = -500;
 	protected $limitdia = FALSE;
 
 	public function reducirSaldo($valor){
@@ -14,7 +14,7 @@ class Medioboleto extends  Tarjeta {
 			$valor*=2;
 		}
 		
-		//Si el ultimo viaje fue realizado el dia de la fecha
+		//Si el ultimo viaje fue realizado hace menos de 5 min
 		if($this->tiempo->time() - $this->ultviaje < 300 ){
 			return false;
 		}
