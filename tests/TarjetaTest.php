@@ -48,11 +48,11 @@ class TarjetaTest extends TestCase {
         $colectivo = new Colectivo(NULL, NULL, NULL);
         $boleto = new Boleto(14.80, $colectivo, $medio, $medio->obtenerID(), $colectivo->linea(), get_class($medio), $medio->obtenerViajesplusAbonados(), $medio->valordelospasajesplus(), $tiempo);
         
-        $this->assertEquals( $colectivo->pagarCon($medio)->obtenerValor(), 7.40 );
+        $medio->reducirSaldo(14.80);
 
         $tiempo->avanzar(500);
 
-        $this->assertEquals( $colectivo->pagarCon($medio)->obtenerValor(), 7.40 );
+        $medio->reducirSaldo(14.80);
 
         $tiempo->avanzar(500);
 
