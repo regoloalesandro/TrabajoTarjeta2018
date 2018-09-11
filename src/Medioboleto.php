@@ -19,12 +19,15 @@ class Medioboleto extends  Tarjeta {
 			return false;
 		}
 		
-		if(getdate( $this->ultviaje )['year'] == getdate( $this->tiempo->time() )['year'] && getdate( $this->ultviaje )['mon'] == getdate( $this->tiempo->time() )['mon'] && getdate( $this->ultviaje )['mday'] == getdate( $this->tiempo->time() )['mday']){
-			//Si ya viajo en el dia de la fecha, este viaje sera su ultimo a mitad de valor
-			$this->limitdia = TRUE;
-		}
-		else{
-			$this->limitdia = FALSE;
+		//Si se realizo por lo menos un viaje desde que se creo la tarjeta
+		if($this->ultviaje != -500){
+			if(getdate( $this->ultviaje )['year'] == getdate( $this->tiempo->time() )['year'] && getdate( $this->ultviaje )['mon'] == getdate( $this->tiempo->time() )['mon'] && getdate( $this->ultviaje )['mday'] == getdate( $this->tiempo->time() )['mday']){
+				//Si ya viajo en el dia de la fecha, este viaje sera su ultimo a mitad de valor
+				$this->limitdia = TRUE;
+			}
+			else{
+				$this->limitdia = FALSE;
+			}
 		}
 		
 
