@@ -24,14 +24,15 @@ class TarjetaTest extends TestCase {
      * Comprueba que la tarjeta no puede cargar saldos invalidos.
      */
     public function testCargaSaldoInvalido() {
-      $tarjeta = new Tarjeta($tiempo->time());
+        $tiempo = new TiempoFalso();
+        $tarjeta = new Tarjeta($tiempo->time());
 
-      $this->assertFalse($tarjeta->recargar(15.0));
-      $this->assertEquals($tarjeta->obtenerSaldo(), 0.0);
+        $this->assertFalse($tarjeta->recargar(15.0));
+        $this->assertEquals($tarjeta->obtenerSaldo(), 0.0);
     }
 
     public function testMedioBoletoLimitacionTiempo(){
-        $tiempo = new TiempoFalso;
+        $tiempo = new TiempoFalso();
         $medio = new Medioboleto( $tiempo->time() );
         $medio->recargar(100.0);
 
@@ -40,7 +41,7 @@ class TarjetaTest extends TestCase {
     }
 
     public function testMedioBoletoLimitacionDia(){
-        $tiempo = new TiempoFalso();
+        $tiempo = new TiempoFalso(1000);
         $medio = new Medioboleto($tiempo->time());
         $medio->recargar(100.0);
 
@@ -48,7 +49,9 @@ class TarjetaTest extends TestCase {
         $boleto = new Boleto(14.80, $colectivo, $medio, $medio->obtenerID(), $colectivo->linea(), get_class($medio), $medio->obtenerViajesplusAbonados(), $medio->valordelospasajesplus(), date("d/m/Y H:i", time()));
         
         $colectivo->pagarCon($medio);
+        $tiempo->avanzar(500);
         $colectivo->pagarCon($medio);
+        $tiempo->avanzar(500);
         $this->assertEquals( $colectivo->pagarCon($medio)->obtenerValor(), 14.80 );
 
     }
