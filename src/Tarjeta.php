@@ -9,9 +9,11 @@ class Tarjeta implements TarjetaInterface {
 	protected $viajesplusquepago;
 	protected $pasajeestandar;
 	protected $pasaje;
+	protected $tiempo;
 
-	public function __construct() {
-        $this->saldo = 0.0;
+	public function __construct($time) {
+		$this->saldo = 0.0;
+		$this->tiempo = $time;
     }
 
 
