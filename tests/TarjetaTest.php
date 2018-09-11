@@ -41,17 +41,21 @@ class TarjetaTest extends TestCase {
     }
 
     public function testMedioBoletoLimitacionDia(){
-        $tiempo = new TiempoFalso(1000);
+        $tiempo = new TiempoFalso();
         $medio = new Medioboleto($tiempo);
         $medio->recargar(100.0);
 
         $colectivo = new Colectivo(NULL, NULL, NULL);
         $boleto = new Boleto(14.80, $colectivo, $medio, $medio->obtenerID(), $colectivo->linea(), get_class($medio), $medio->obtenerViajesplusAbonados(), $medio->valordelospasajesplus(), $tiempo);
         
-        $colectivo->pagarCon($medio);
+        $this->assertEquals( $colectivo->pagarCon($medio)->obtenerValor(), 7.40 );
+
         $tiempo->avanzar(500);
-        $colectivo->pagarCon($medio);
+
+        $this->assertEquals( $colectivo->pagarCon($medio)->obtenerValor(), 7.40 );
+
         $tiempo->avanzar(500);
+
         $this->assertEquals( $colectivo->pagarCon($medio)->obtenerValor(), 14.80 );
 
     }

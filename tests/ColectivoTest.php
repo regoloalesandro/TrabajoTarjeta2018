@@ -7,7 +7,7 @@ use PHPUnit\Framework\TestCase;
 class ColectivoTest extends TestCase {
 
     public function testConSaldo() {
-        $tiempo = new TiempoFalso(1000);
+        $tiempo = new TiempoFalso();
         $colectivo = new Colectivo(NULL, NULL, NULL);
         $tarjeta = new Tarjeta( $tiempo );
         $tarjeta->recargar(100.0);

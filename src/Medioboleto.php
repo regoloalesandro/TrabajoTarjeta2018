@@ -32,7 +32,7 @@ class Medioboleto extends  Tarjeta {
 			$this->limitdia = TRUE;
 		}
 		else{
-			$this->limitdia = false;
+			$this->limitdia = FALSE;
 		}
 		
 
