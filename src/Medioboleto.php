@@ -6,6 +6,16 @@ class Medioboleto extends  Tarjeta {
 	protected $ultviaje = -500;
 	protected $limitdia = FALSE;
 
+	public function avanzarTiempo($valor){
+		if ($this->tiempo instanceof TiempoFalso){
+			$this->tiempo->avanzar($valor); 
+		}
+		else{
+			return false;
+		}
+		return true;
+	}
+
 	public function reducirSaldo($valor){
 		$this->pasajeestandar=$valor;
 		$valor/=2;
