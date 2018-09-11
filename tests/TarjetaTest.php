@@ -46,7 +46,7 @@ class TarjetaTest extends TestCase {
         $medio->recargar(100.0);
 
         $colectivo = new Colectivo(NULL, NULL, NULL);
-        $boleto = new Boleto(14.80, $colectivo, $medio, $medio->obtenerID(), $colectivo->linea(), get_class($medio), $medio->obtenerViajesplusAbonados(), $medio->valordelospasajesplus(), date("d/m/Y H:i", $tiempo->time()));
+        $boleto = new Boleto(14.80, $colectivo, $medio, $medio->obtenerID(), $colectivo->linea(), get_class($medio), $medio->obtenerViajesplusAbonados(), $medio->valordelospasajesplus(), $tiempo->time());
         
         $colectivo->pagarCon($medio);
         $tiempo->avanzar(500);
