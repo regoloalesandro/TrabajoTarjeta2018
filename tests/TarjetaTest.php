@@ -24,7 +24,7 @@ class TarjetaTest extends TestCase {
      * Comprueba que la tarjeta no puede cargar saldos invalidos.
      */
     public function testCargaSaldoInvalido() {
-        $tiempo = new TiempoFalso();
+        $tiempo = new TiempoReal();
         $tarjeta = new Tarjeta($tiempo);
 
         $this->assertFalse($tarjeta->recargar(15.0));
@@ -55,7 +55,8 @@ class TarjetaTest extends TestCase {
 
         $this->assertEquals( $colectivo->pagarCon($medio)->obtenerValor(), 7.40 );
 
-        $tiempo->avanzar(500);
+        $tiempo->reiniciar();
+        $tiempo->avanzar(1500);
 
         $this->assertEquals( $colectivo->pagarCon($medio)->obtenerValor(), 14.80 );
 
