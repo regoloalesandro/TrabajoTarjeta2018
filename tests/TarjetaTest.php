@@ -52,10 +52,12 @@ class TarjetaTest extends TestCase {
         $tiempo->avanzar(500);
         $this->assertEquals( $tiempo->time(), 500 );
 
+        $tiempo->reiniciar();
+        $tiempo->avanzar(500);
+        $this->assertEquals( $tiempo->time(), 500 );
 
         $this->assertEquals( $colectivo->pagarCon($medio)->obtenerValor(), 7.40 );
 
-        $tiempo->reiniciar();
         $tiempo->avanzar(1500);
 
         $this->assertEquals( $colectivo->pagarCon($medio)->obtenerValor(), 14.80 );
