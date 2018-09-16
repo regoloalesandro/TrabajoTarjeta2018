@@ -27,7 +27,6 @@ class BoletoTest extends TestCase {
         $boleto = $colectivo->pagarCon($tarjeta);
         
         $this->assertEquals($boleto->obtenerColectivo(), $colectivo);
-        $this->assertEquals($boleto->obtenersaldo(), 85.2);
         $this->assertEquals($boleto->obtenertipodetarjeta(), 'Tarjeta');
         $this->assertEquals($boleto->obteneriID(), $tarjeta->obtenerID() );
         $this->assertEquals($boleto->viajesplus(), 0);
