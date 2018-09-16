@@ -8,9 +8,12 @@ class ColectivoTest extends TestCase {
 
     public function testConSaldo() {
         $tiempo = new TiempoFalso();
-        $colectivo = new Colectivo(NULL, NULL, NULL);
+        $colectivo = new Colectivo('test1', 'test2', 'test3');
         $tarjeta = new Tarjeta( $tiempo );
         $tarjeta->recargar(100.0);
+
+        $this->assertEquals( $colectivo->empresa() , 'test2');
+        $this->assertEquals( $colectivo->numero() , 'test3');        
 
         $boleto = new Boleto(14.80, $colectivo, $tarjeta, $tarjeta->obtenerID(), $colectivo->linea(), get_class($tarjeta), $tarjeta->obtenerViajesplusAbonados(), $tarjeta->valordelospasajesplus(), $tiempo);
 
