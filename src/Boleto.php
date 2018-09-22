@@ -57,7 +57,7 @@ class Boleto implements BoletoInterface {
     }
 
     public function obtenerLineadelcolectivo(){
-        return $this->Linea;
+        return $this->linea;
     }
     public function obtenertipodetarjeta(){
        return $this->tipodetarjeta;
