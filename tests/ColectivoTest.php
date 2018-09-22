@@ -40,5 +40,6 @@ class ColectivoTest extends TestCase {
         
         $boleto2 = new Boleto(44.4, $colectivo, $tarjeta, $tarjeta->obtenerID(), $colectivo->linea(), get_class($tarjeta), 2, 29.6, $tiempo);
         $this->assertEquals( $colectivo->pagarCon($tarjeta) , $boleto2);
+        
     }
 }
