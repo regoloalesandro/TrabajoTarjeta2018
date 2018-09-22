@@ -31,18 +31,18 @@ class TarjetaTest extends TestCase {
         $this->assertEquals($tarjeta->obtenerSaldo(), 0.0);
     }
 
-    public function testMedioBoletoLimitacionTiempo(){
+    public function testMedioSecundarioLimitacionTiempo(){
         $tiempo = new TiempoFalso();
-        $medio = new Medioboleto( $tiempo );
+        $medio = new MedioSecundario( $tiempo );
         $medio->recargar(100.0);
 
         $medio->reducirSaldo(14.80);
         $this->assertFalse($medio->reducirSaldo(14.80));
     }
 
-    public function testMedioBoletoLimitacionDia(){
+    public function testMedioUniversitarioLimitacionDia(){
         $tiempo = new TiempoFalso();
-        $medio = new Medioboleto($tiempo);
+        $medio = new MedioUniversitario($tiempo);
         $medio->recargar(100.0);
 
         $colectivo = new Colectivo(NULL, NULL, NULL);

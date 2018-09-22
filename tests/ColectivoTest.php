@@ -16,7 +16,7 @@ class ColectivoTest extends TestCase {
 
         $this->assertEquals( $colectivo->pagarCon($tarjeta) , $boleto);
         
-        $medio = new Medioboleto($tiempo);
+        $medio = new MedioSecundario($tiempo);
         $medio->recargar(100.0);
 	    $boleto2 = new Boleto(7.40, $colectivo, $medio, $medio->obtenerID(), $colectivo->linea(), get_class($medio), $medio->obtenerViajesplusAbonados(), $medio->valordelospasajesplus(), $tiempo);
         $this->assertEquals( $colectivo->pagarCon($medio), $boleto2 );
