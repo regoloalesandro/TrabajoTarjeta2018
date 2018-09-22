@@ -14,6 +14,7 @@ class BoletoTest extends TestCase {
     }
     public function testLineaLectivo() {
         $linea= 420;
+        
         $colectivo = new Colectivo($linea, NULL, NULL);
         $boleto = new Boleto(NULL, NULL, NULL, NULL, $colectivo ->linea(), NULL, NULL, NULL, NULL);
 
