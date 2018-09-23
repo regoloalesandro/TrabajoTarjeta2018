@@ -63,8 +63,8 @@ class Tarjeta implements TarjetaInterface {
 
 	public function reducirSaldo($valor){
 		$this->pasajeestandar=$valor;
-		if($this->saldo>$valor&&$this->viajep==0){
-			$this->saldo -= $valor;
+		if($this->saldo>$valor&& $this->viajep ==0){
+			$this->saldo = $this->saldo - $valor;
 			$this->pasaje = $valor;
 			$this->viajesplusquepago= $this->viajep;
 		}

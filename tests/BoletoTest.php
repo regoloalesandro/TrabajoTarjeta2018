@@ -46,14 +46,14 @@ class BoletoTest extends TestCase {
         $colectivo = new Colectivo(NULL, NULL, NULL);
         $boleto = new Boleto(NULL, $colectivo, $tarjeta, NULL,NULL, NULL, NULL, NULL, $tiempo);
 
-        $this->assertEquals($boleto->obtenerolectivo(), $colectivo);
+        $this->assertEquals($boleto->obtenerColectivo(), $colectivo);
     }
  	public function testid() {
         $tiempo = new TiempoFalso();
         $tarjeta = new Tarjeta( $tiempo );
         $colectivo = new Colectivo(NULL, NULL, NULL);
 	$id=$tarejta->obtenerID();
-        $boleto = new Boleto(NULL, NULL, $tarjeta, $tarejta->obtenerID(),NULL, NULL, NULL, NULL, $tiempo);
+        $boleto = new Boleto(NULL, NULL, $tarjeta, $tarjeta->obtenerID(),NULL, NULL, NULL, NULL, $tiempo);
 
         $this->assertEquals($boleto->obteneriID(), $id);
     }

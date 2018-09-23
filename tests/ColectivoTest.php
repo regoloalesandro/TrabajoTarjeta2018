@@ -40,7 +40,19 @@ class ColectivoTest extends TestCase {
         $tarjeta->recargar(100.0);
      
         $boleto2 = new Boleto(44.4, $colectivo, $tarjeta, $tarjeta->obtenerID(), $colectivo->linea(), get_class($tarjeta), 2, 29.6, $tiempo);
+	$this->assertEquals( $colectivo->pagarCon($tarjeta) , $boleto);
+        $this->assertEquals( $colectivo->pagarCon($tarjeta) , $boleto);
+	$this->assertFalse($colectivo->pagarCon($tarjeta));
     
+    }
+
+	public function testFuncionesColectivo() {
+        $linea=420;
+	$empresa="muni";
+	$numero=69;
+        $colectivo = new Colectivo($linea,$empresa,$numero);
+	$this->assertEquals( $colectivo->numero() , $numero);
+	$this->assertEquals( $colectivo->empresa() , $empresa);
     }
 /**
     public function testTiemporeal(){
