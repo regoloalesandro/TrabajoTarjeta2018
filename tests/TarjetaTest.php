@@ -62,8 +62,9 @@ class TarjetaTest extends TestCase {
     }
     public function testJubilados(){
         $tiempo = new TiempoFalso();
+	$valor=420.0;
         $jubi =new Jubilados($tiempo);
 	$this->assertEquals( $jubi->valorpasaje(), 0);
-	$this->assertTrue($jubi->reducirSaldo());
+	$this->assertTrue($jubi->reducirSaldo($valor));
 	}
 }
