@@ -63,9 +63,11 @@ class ColectivoTest extends TestCase {
 	$this->assertEquals( $colectivo->numero() , $numero);
 	$this->assertEquals( $colectivo->empresa() , $empresa);
     }
-/**
-    public function testTiemporeal(){
+
+    public function testTiempo(){
 	 $tiempo = new TiempoReal();
-	 $this->assertTrue(isset($tiempo->time());
-	}*/
+	 $tiempo2 = new TiempoFalso();
+         $this->assertTrue(isset($tiempo->time()));
+	 $this->assertEquals($tiempo2->reiniciar(),0);
+	}
 }
