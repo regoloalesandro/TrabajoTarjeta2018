@@ -12,6 +12,9 @@ class TarjetaTest extends TestCase {
     public function testCargaSaldo() {
         $tiempo = new TiempoFalso();
         $tarjeta = new Tarjeta($tiempo);
+	$tarjeta2 = new Tarjeta($tiempo);
+	$this->assertTrue($tarjeta->recargar(30.0));
+        $this->assertEquals($tarjeta->obtenerSaldo(), 30.0);
 
         $this->assertTrue($tarjeta->recargar(10.0));
         $this->assertEquals($tarjeta->obtenerSaldo(), 10.0);
@@ -27,8 +30,13 @@ class TarjetaTest extends TestCase {
         $this->assertEquals($tarjeta->obtenerSaldo(), 772.08);
         $this->assertTrue($tarjeta->recargar(962.59));
         $this->assertEquals($tarjeta->obtenerSaldo(),1956.25);
-      
-    }
+	
+	$this->assertEquals($tarjeta->obtenerViajesplus(),0);
+      	$tarjeta->plus();
+	$this->assertEquals($tarjeta->obtenerViajesplus(),1);    
+      	$tarjeta->plus();
+	$this->assertEquals($tarjeta->obtenerViajesplus(),2); 
+	}
 
     /**
      * Comprueba que la tarjeta no puede cargar saldos invalidos.
