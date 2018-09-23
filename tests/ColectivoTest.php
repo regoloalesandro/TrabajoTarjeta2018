@@ -67,7 +67,7 @@ class ColectivoTest extends TestCase {
     public function testTiempo(){
 	 $tiempo = new TiempoReal();
 	 $tiempo2 = new TiempoFalso();
-         $this->assertTrue(isset($tiempo->time()));
+         $this->assertTrue($tiempo->time()!==null);
 	 $this->assertEquals($tiempo2->reiniciar(),0);
 	}
 }
