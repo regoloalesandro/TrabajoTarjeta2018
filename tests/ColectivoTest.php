@@ -12,18 +12,25 @@ class ColectivoTest extends TestCase {
         $tarjeta = new Tarjeta( $tiempo );
         $tarjeta->recargar(100.0);
 
-        $boleto = new Boleto(14.80, $colectivo, $tarjeta, $tarjeta->obtenerID(), $colectivo->linea(), get_class($tarjeta), $tarjeta->obtenerViajesplusAbonados(), $tarjeta->valordelospasajesplus(), $tiempo);
-
-        $this->assertEquals( $colectivo->pagarCon($tarjeta) , $boleto);
+        $boleto = $colectivo->pagarCon($tarjeta);
+	$this->assertEquals($boleto->obtenerValor(),14.8);
+        $this->assertEquals($boleto->obtenersaldo(),85.2);
+	$this->assertEquals($boleto->viajesplus(),0);
+	$this->assertEquals($boleto->abonadoenviajesplus(),0);
         
-        $medio = new Medioboleto($tiempo);
+        $medio = new MedioSecundario($tiempo);
         $medio->recargar(100.0);
-	    $boleto2 = new Boleto(7.40, $colectivo, $medio, $medio->obtenerID(), $colectivo->linea(), get_class($medio), $medio->obtenerViajesplusAbonados(), $medio->valordelospasajesplus(), $tiempo);
-        $this->assertEquals( $colectivo->pagarCon($medio), $boleto2 );
+
+	$boleto2 = $colectivo->pagarCon($medio);
+	$this->assertEquals($boleto2->obtenerValor(),7.4);
+        $this->assertEquals($boleto2->obtenersaldo(),92.6);
+	$this->assertEquals($boleto2->viajesplus(),0);
+	$this->assertEquals($boleto2->abonadoenviajesplus(),0);
         
         $jubi =new Jubilados($tiempo);
-	    $boleto3 = new Boleto (0,$colectivo,$jubi, $jubi->obtenerID(), $colectivo->linea(), get_class($jubi), $jubi->obtenerViajesplusAbonados(), $jubi->valordelospasajesplus(), $tiempo);
+	    $boleto3 = new Boleto ($jubi->valorpasaje(),$colectivo,$jubi, $jubi->obtenerID(), $colectivo->linea(), get_class($jubi), $jubi->obtenerViajesplusAbonados(), $jubi->valordelospasajesplus(), $tiempo);
         $this->assertEquals( $colectivo->pagarCon($jubi) , $boleto3);
+	
     }
 
     public function testSinSaldo() {
@@ -34,11 +41,33 @@ class ColectivoTest extends TestCase {
 
         $boleto = new Boleto(14.80, $colectivo, $tarjeta, $tarjeta->obtenerID(), $colectivo->linea(), get_class($tarjeta),-1, -1, $tiempo);
         $this->assertEquals( $colectivo->pagarCon($tarjeta) , $boleto);
-        $this->assertEquals( $colectivo->pagarCon($tarjeta) , $boleto);
-
+	$colectivo->pagarCon($tarjeta);
         $tarjeta->recargar(100.0);
-        
-        $boleto2 = new Boleto(44.4, $colectivo, $tarjeta, $tarjeta->obtenerID(), $colectivo->linea(), get_class($tarjeta), 2, 29.6, $tiempo);
-        $this->assertEquals( $colectivo->pagarCon($tarjeta) , $boleto2);
+	$boleto2=$colectivo->pagarCon($tarjeta);
+ 	$this->assertEquals($boleto2->obtenerValor(),44.4);
+        $this->assertEquals($boleto2->obtenersaldo(),55.6);
+	$this->assertEquals($boleto2->viajesplus(),2);
+	$this->assertEquals($boleto2->abonadoenviajesplus(),29.6);
+	$tarjeta2 = new Tarjeta($tiempo);
+        $colectivo->pagarCon($tarjeta2);
+	$colectivo->pagarCon($tarjeta2);
+	$this->assertFalse($colectivo->pagarCon($tarjeta2));
+    
     }
+
+	public function testFuncionesColectivo() {
+        $linea=420;
+	$empresa="muni";
+	$numero=69;
+        $colectivo = new Colectivo($linea,$empresa,$numero);
+	$this->assertEquals( $colectivo->numero() , $numero);
+	$this->assertEquals( $colectivo->empresa() , $empresa);
+    }
+
+    public function testTiempo(){
+	 $tiempo = new TiempoReal();
+	 $tiempo2 = new TiempoFalso();
+         $this->assertTrue($tiempo->time()!==null);
+	 $this->assertEquals($tiempo2->reiniciar(),0);
+	}
 }
