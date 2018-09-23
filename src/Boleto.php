@@ -32,6 +32,7 @@ class Boleto implements BoletoInterface {
         $this->viajesplus = $viajesplus;
         $this->fecha = $fecha;
         $this->abonadoenviajesplus = $abonadoenviajesplus;
+        $this->saldo= $tarjeta->obtenerSaldo();
     }
 
     /**
