@@ -43,7 +43,7 @@ class ColectivoTest extends TestCase {
     
     }
     public function testTiemporeal(){
-	 $tiempo = new TiempoReal;
+	 $tiempo = new TiempoReal();
 	 $this->assertTrue(isset($tiempo->time());
 	}
 }
