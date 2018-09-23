@@ -8,13 +8,16 @@ class BoletoTest extends TestCase {
 
     public function testSaldoCero() {
         $valor = 14.80;
+        $tiempo = new TiempoFalso();
+        $tarjeta = new Tarjeta( $tiempo );
         $boleto = new Boleto($valor, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
         $this->assertEquals($boleto->obtenerValor(), $valor);
     }
     public function testLineaLectivo() {
         $linea= 420;
-
+        $tiempo = new TiempoFalso();
+        $tarjeta = new Tarjeta( $tiempo );
         $colectivo = new Colectivo($linea, NULL, NULL);
         $boleto = new Boleto(NULL, NULL, NULL, NULL, $colectivo ->linea(), NULL, NULL, NULL, NULL);
 
