@@ -52,7 +52,7 @@ class BoletoTest extends TestCase {
         $tiempo = new TiempoFalso();
         $tarjeta = new Tarjeta( $tiempo );
         $colectivo = new Colectivo(NULL, NULL, NULL);
-	$id=$tarejta->obtenerID();
+	$id=$tarjeta->obtenerID();
         $boleto = new Boleto(NULL, NULL, $tarjeta, $tarjeta->obtenerID(),NULL, NULL, NULL, NULL, $tiempo);
 
         $this->assertEquals($boleto->obteneriID(), $id);
