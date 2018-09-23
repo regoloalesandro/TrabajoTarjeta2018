@@ -22,8 +22,9 @@ class ColectivoTest extends TestCase {
         $this->assertEquals( $colectivo->pagarCon($medio), $boleto2 );
         
         $jubi =new Jubilados($tiempo);
-	    $boleto3 = new Boleto (0,$colectivo,$jubi, $jubi->obtenerID(), $colectivo->linea(), get_class($jubi), $jubi->obtenerViajesplusAbonados(), $jubi->valordelospasajesplus(), $tiempo);
+	    $boleto3 = new Boleto ($jubi->valorpasaje(),$colectivo,$jubi, $jubi->obtenerID(), $colectivo->linea(), get_class($jubi), $jubi->obtenerViajesplusAbonados(), $jubi->valordelospasajesplus(), $tiempo);
         $this->assertEquals( $colectivo->pagarCon($jubi) , $boleto3);
+	$this->assertTrue($jubi->reducirSaldo());
     }
 
     public function testSinSaldo() {
