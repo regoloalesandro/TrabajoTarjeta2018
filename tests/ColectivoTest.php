@@ -12,7 +12,7 @@ class ColectivoTest extends TestCase {
         $tarjeta = new Tarjeta( $tiempo );
         $tarjeta->recargar(100.0);
 
-        $boleto = $colectivo->pagarCon($tarjeta)
+        $boleto = $colectivo->pagarCon($tarjeta);
 
         $this->assertEquals($boleto->obtenersaldo(),85.2);
 	$this->assertEquals($boleto->viajesplus(),0);
