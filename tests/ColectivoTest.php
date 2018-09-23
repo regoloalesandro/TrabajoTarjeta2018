@@ -41,9 +41,10 @@ class ColectivoTest extends TestCase {
 
         $boleto = new Boleto(14.80, $colectivo, $tarjeta, $tarjeta->obtenerID(), $colectivo->linea(), get_class($tarjeta),-1, -1, $tiempo);
         $this->assertEquals( $colectivo->pagarCon($tarjeta) , $boleto);
+	$colectivo->pagarCon($tarjeta);
         $tarjeta->recargar(100.0);
 	$boleto2=$colectivo->pagarCon($tarjeta);
- 	$this->assertEquals($boleto2->obtenerValor(),29.6);
+ 	$this->assertEquals($boleto2->obtenerValor(),44.4);
         $this->assertEquals($boleto2->obtenersaldo(),55.6);
 	$this->assertEquals($boleto2->viajesplus(),2);
 	$this->assertEquals($boleto2->abonadoenviajesplus(),29.6);
