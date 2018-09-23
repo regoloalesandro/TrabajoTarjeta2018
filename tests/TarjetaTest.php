@@ -13,8 +13,8 @@ class TarjetaTest extends TestCase {
         $tiempo = new TiempoFalso();
         $tarjeta = new Tarjeta($tiempo);
 	$tarjeta2 = new Tarjeta($tiempo);
-	$this->assertTrue($tarjeta->recargar(30.0));
-        $this->assertEquals($tarjeta->obtenerSaldo(), 30.0);
+	$this->assertTrue($tarjeta2->recargar(30.0));
+        $this->assertEquals($tarjeta2->obtenerSaldo(), 30.0);
 
         $this->assertTrue($tarjeta->recargar(10.0));
         $this->assertEquals($tarjeta->obtenerSaldo(), 10.0);
