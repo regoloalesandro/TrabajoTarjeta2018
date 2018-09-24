@@ -3,7 +3,6 @@
 namespace TrabajoTarjeta;
 
 class MedioUniversitario extends  Tarjeta {
-	protected $ultviaje = -300;
 	protected $limitdia = FALSE;
 
 	public function reducirSaldo($valor){

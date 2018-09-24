@@ -10,6 +10,10 @@ class Tarjeta implements TarjetaInterface {
 	protected $pasajeestandar;
 	protected $pasaje;
 	protected $tiempo;
+	
+	protected $ultviaje = -300;
+	protected $ultlinea;
+	protected $ultbandera;
 
 	public function __construct($time) {
 		$this->saldo = 0.0;
@@ -61,8 +65,45 @@ class Tarjeta implements TarjetaInterface {
 		return $this->pasaje;
 	}
 
-	public function reducirSaldo($valor){
+	public function checkTrasbordo($linea, $bandera){
+		if($this->ultlinea == $linea && $this->ultbandera == $bandera){
+			return $valor;
+		}
+		
+		else{
+			//Si es sabado
+			if( date('w', $this->obtenerTiempo()) == 6 ){
+				//Entre las 14 y 22
+				if( date('H', $this->obtenerTiempo())>=14 && date('H', $this->obtenerTiempo())<=22){
+					if($this->obtenerTiempo() - $this->ultviaje < 5400){
+						return $valor/=3;
+					}
+				}
+			}
+			//Si es domingo
+			elseif( date('w', $this->obtenerTiempo()) == 0 ){
+				//Entre las 6 y 22
+				if( date('H', $this->obtenerTiempo())>=6 && date('H', $this->obtenerTiempo())<=22){
+					if($this->obtenerTiempo() - $this->ultviaje < 5400){
+						return $valor/=3;
+					}
+				}
+			}
+			else{
+				if($this->obtenerTiempo() - $this->ultviaje < 3600){
+					return $valor/=3;
+				}
+			}
+
+		}
+	}
+
+	public function reducirSaldo($valor, $linea, $bandera){
 		$this->pasajeestandar=$valor;
+
+		$valor = $this->checkTrasbordo();
+		
+
 		if($this->saldo>$valor&& $this->viajep ==0){
 			$this->saldo = $this->saldo - $valor;
 			$this->pasaje = $valor;
