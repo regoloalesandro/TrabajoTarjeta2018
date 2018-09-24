@@ -12,6 +12,7 @@ class Tarjeta implements TarjetaInterface {
 	protected $tiempo;
 	
 	protected $ultviaje = -300;
+	protected $ultviajetrasbordo = FALSE;
 	protected $ultlinea;
 	protected $ultbandera;
 
@@ -69,26 +70,34 @@ class Tarjeta implements TarjetaInterface {
 		if($this->ultlinea == $linea && $this->ultbandera == $bandera){
 			return $valor;
 		}
-		
-		else{
-			//Si es sabado
+
+		else{		
+			//Sábados de las 14 a 22 hs 
 			if( date('w', $this->obtenerTiempo()) == 6 ){
-				//Entre las 14 y 22
-				if( date('H', $this->obtenerTiempo())>=14 && date('H', $this->obtenerTiempo())<=22){
+				if( date('H', $this->obtenerTiempo())>=14 || date('H', $this->obtenerTiempo())<=22){
 					if($this->obtenerTiempo() - $this->ultviaje < 5400){
 						return $valor/=3;
 					}
 				}
 			}
-			//Si es domingo
+
+			//Domingos de 6 a 22 hs
 			elseif( date('w', $this->obtenerTiempo()) == 0 ){
-				//Entre las 6 y 22
-				if( date('H', $this->obtenerTiempo())>=6 && date('H', $this->obtenerTiempo())<=22){
+				if( date('H', $this->obtenerTiempo())>=6 || date('H', $this->obtenerTiempo())<=22){
 					if($this->obtenerTiempo() - $this->ultviaje < 5400){
 						return $valor/=3;
 					}
 				}
 			}
+
+			//Si es de noche entre las 22 y 6
+			elseif( date('H', $this->obtenerTiempo())>=22 || date('H', $this->obtenerTiempo())<=6){
+				if($this->obtenerTiempo() - $this->ultviaje < 5400){
+					return $valor/=3;
+				}
+			}
+
+			//Lunes a viernes de 6 a 22 y sábados de 6 a 14 hs
 			else{
 				if($this->obtenerTiempo() - $this->ultviaje < 3600){
 					return $valor/=3;
@@ -98,11 +107,24 @@ class Tarjeta implements TarjetaInterface {
 		}
 	}
 
+	public function checkUltViajeTrasbordo(){
+		return $this->ultviajetrasbordo;
+	}
+
 	public function reducirSaldo($valor, $linea, $bandera){
 		$this->pasajeestandar=$valor;
 
-		$valor = $this->checkTrasbordo();
+		if($this->checkUltViajeTrasbordo() == FALSE){
+			$valor = $this->checkTrasbordo();
+			if($this->pasajeestandar != $valor){
+				$this->ultviajetrasbordo=TRUE;
+			}
+		}
+		else{
+			$this->ultviajetrasbordo=FALSE;
+		}
 		
+
 
 		if($this->saldo>$valor&& $this->viajep ==0){
 			$this->saldo = $this->saldo - $valor;
