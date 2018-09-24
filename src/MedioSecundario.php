@@ -8,8 +8,16 @@ class MedioSecundario extends  Tarjeta {
 	public function reducirSaldo($valor){
 		$this->pasajeestandar=$valor;
 		$valor/=2;
-		$valor = $this->checkTrasbordo();
 		
+		if($this->checkUltViajeTrasbordo() == FALSE){
+			$valor = $this->checkTrasbordo();
+			if($this->pasajeestandar != $valor){
+				$this->ultviajetrasbordo=TRUE;
+			}
+		}
+		else{
+			$this->ultviajetrasbordo=FALSE;
+		}		
 		//Si el ultimo viaje fue realizado hace menos de 5 min
 		if($this->tiempo->time() - $this->ultviaje < 300 ){
 			return FALSE;
