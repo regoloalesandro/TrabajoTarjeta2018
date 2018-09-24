@@ -8,6 +8,8 @@ class MedioUniversitario extends  Tarjeta {
 	public function reducirSaldo($valor){
 		$this->pasajeestandar=$valor;
 		$valor/=2;
+		$valor = $this->checkTrasbordo();
+
 		//Si ya viajo 2 veces hoy, el boleto tendra valor normal
 		if($this->limitdia == TRUE ){
 			$valor*=2;
