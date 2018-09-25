@@ -5,7 +5,7 @@ namespace TrabajoTarjeta;
 class MedioSecundario extends  Tarjeta {
 	protected $limitdia = FALSE;
 
-	public function reducirSaldo($valor){
+	public function reducirSaldo($valor, $linea, $bandera){
 		$this->pasajeestandar=$valor;
 		$valor/=2;
 		

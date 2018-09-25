@@ -21,7 +21,7 @@ interface TarjetaInterface {
      * @return float
      */
     public function valorpasaje();
-    public function reducirSaldo($valor);
+    public function reducirSaldo($valor, $linea, $bandera);
     public function obtenerSaldo();
     public function obtenerViajesplus();
     public function plus();
