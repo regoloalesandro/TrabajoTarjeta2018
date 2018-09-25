@@ -54,7 +54,7 @@ class TarjetaTest extends TestCase {
         $medio = new MedioSecundario( $tiempo );
         $medio->recargar(100.0);
 
-        $medio->reducirSaldo(14.80);
+        $medio->reducirSaldo(14.80, NULL, NULL);
         $this->assertFalse($medio->reducirSaldo(14.80));
     }
 

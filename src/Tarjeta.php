@@ -115,7 +115,7 @@ class Tarjeta implements TarjetaInterface {
 		$this->pasajeestandar=$valor;
 
 		if($this->checkUltViajeTrasbordo() == FALSE){
-			$valor = $this->checkTrasbordo();
+			$valor = $this->checkTrasbordo($linea, $bandera);
 			if($this->pasajeestandar != $valor){
 				$this->ultviajetrasbordo=TRUE;
 			}
