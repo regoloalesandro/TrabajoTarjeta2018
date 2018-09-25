@@ -55,7 +55,7 @@ class TarjetaTest extends TestCase {
         $medio->recargar(100.0);
 
         $medio->reducirSaldo(14.80, NULL, NULL);
-        $this->assertFalse($medio->reducirSaldo(14.80));
+        $this->assertFalse($medio->reducirSaldo(14.80, NULL, NULL));
     }
 
     public function testMedioUniversitarioLimitacionDia(){
@@ -63,7 +63,7 @@ class TarjetaTest extends TestCase {
         $medio = new MedioUniversitario($tiempo);
         $medio->recargar(100.0);
 
-        $colectivo = new Colectivo(NULL, NULL, NULL);
+        $colectivo = new Colectivo('a', 'a', 1);
         
         $this->assertEquals( $colectivo->pagarCon($medio)->obtenerValor(), 7.40 );
 
@@ -80,9 +80,10 @@ class TarjetaTest extends TestCase {
     }
     public function testJubilados(){
         $tiempo = new TiempoFalso();
-	$valor=420.0;
+	    $valor=420.0;
         $jubi =new Jubilados($tiempo);
-	$this->assertEquals( $jubi->valorpasaje(), 0);
-	$this->assertTrue($jubi->reducirSaldo($valor));
+
+        $this->assertEquals( $jubi->valorpasaje(), 0);
+        $this->assertTrue($jubi->reducirSaldo($valor, NULL, NULL));
 	}
 }

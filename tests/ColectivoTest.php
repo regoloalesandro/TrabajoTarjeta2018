@@ -8,7 +8,7 @@ class ColectivoTest extends TestCase {
 
     public function testConSaldo() {
         $tiempo = new TiempoFalso();
-        $colectivo = new Colectivo(NULL, NULL, NULL);
+        $colectivo = new Colectivo('a', 'a', 1);
         $tarjeta = new Tarjeta( $tiempo );
         $tarjeta->recargar(100.0);
 

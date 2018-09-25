@@ -68,7 +68,7 @@ class Tarjeta implements TarjetaInterface {
 
 	public function checkTrasbordo($linea, $bandera){
 		if($this->ultlinea == $linea && $this->ultbandera == $bandera){
-			return $valor;
+			return FALSE;
 		}
 
 		else{		
@@ -76,7 +76,7 @@ class Tarjeta implements TarjetaInterface {
 			if( date('w', $this->obtenerTiempo()) == 6 ){
 				if( date('H', $this->obtenerTiempo())>=14 || date('H', $this->obtenerTiempo())<=22){
 					if($this->obtenerTiempo() - $this->ultviaje < 5400){
-						return $valor/=3;
+						return TRUE;
 					}
 				}
 			}
@@ -85,7 +85,7 @@ class Tarjeta implements TarjetaInterface {
 			elseif( date('w', $this->obtenerTiempo()) == 0 ){
 				if( date('H', $this->obtenerTiempo())>=6 || date('H', $this->obtenerTiempo())<=22){
 					if($this->obtenerTiempo() - $this->ultviaje < 5400){
-						return $valor/=3;
+						return TRUE;
 					}
 				}
 			}
@@ -93,14 +93,14 @@ class Tarjeta implements TarjetaInterface {
 			//Si es de noche entre las 22 y 6
 			elseif( date('H', $this->obtenerTiempo())>=22 || date('H', $this->obtenerTiempo())<=6){
 				if($this->obtenerTiempo() - $this->ultviaje < 5400){
-					return $valor/=3;
+					return TRUE;
 				}
 			}
 
 			//Lunes a viernes de 6 a 22 y sábados de 6 a 14 hs
 			else{
 				if($this->obtenerTiempo() - $this->ultviaje < 3600){
-					return $valor/=3;
+					return TRUE;
 				}
 			}
 
@@ -115,7 +115,8 @@ class Tarjeta implements TarjetaInterface {
 		$this->pasajeestandar=$valor;
 
 		if($this->checkUltViajeTrasbordo() == FALSE){
-			$valor = $this->checkTrasbordo($linea, $bandera);
+			if ($this->checkTrasbordo($linea, $bandera)) $valor/=3;
+			
 			if($this->pasajeestandar != $valor){
 				$this->ultviajetrasbordo=TRUE;
 			}
