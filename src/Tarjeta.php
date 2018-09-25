@@ -11,7 +11,7 @@ class Tarjeta implements TarjetaInterface {
 	protected $pasaje;
 	protected $tiempo;
 	
-	protected $ultviaje = -300;
+	protected $ultviaje = -5401;
 	protected $ultviajetrasbordo = FALSE;
 	protected $ultlinea;
 	protected $ultbandera;
