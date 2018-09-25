@@ -9,17 +9,7 @@ class MedioSecundario extends  Tarjeta {
 		$this->pasajeestandar=$valor;
 		$valor/=2;
 		
-		if($this->checkUltViajeTrasbordo() == FALSE){
-			if ($this->checkTrasbordo($linea, $bandera)){
-				$valor = round($valor/=3, 2);
-				//Esta bandera se pone true para la proxima vez que intente pagar
-				$this->ultviajetrasbordo=TRUE;				
-			}
-		}
-		else{
-			$this->ultviajetrasbordo=FALSE;
-		}
-
+		
 		//Si el ultimo viaje fue realizado hace menos de 5 min
 		if($this->tiempo->time() - $this->ultviaje < 300 ){
 			return FALSE;
@@ -36,7 +26,17 @@ class MedioSecundario extends  Tarjeta {
 			}
 		}
 		
-
+		if($this->checkUltViajeTrasbordo() == FALSE){
+			if ($this->checkTrasbordo($linea, $bandera)){
+				$valor = round($valor/=3, 2);
+				//Esta bandera se pone true para la proxima vez que intente pagar
+				$this->ultviajetrasbordo=TRUE;				
+			}
+		}
+		else{
+			$this->ultviajetrasbordo=FALSE;
+		}
+		
 		if($this->saldo>$valor && $this->viajep >= 0 && $this->viajep <= 2){
 			$this->saldo -= $valor * ($this->viajep+1);
 			$this->quitarplus( $this->viajep );

@@ -9,17 +9,7 @@ class MedioUniversitario extends  Tarjeta {
 		$this->pasajeestandar=$valor;
 		$valor/=2;
 		
-		if($this->checkUltViajeTrasbordo() == FALSE){
-			if ($this->checkTrasbordo($linea, $bandera)){
-				$valor = round($valor/=3, 2);
-				//Esta bandera se pone true para la proxima vez que intente pagar
-				$this->ultviajetrasbordo=TRUE;				
-			}
-		}
-		else{
-			$this->ultviajetrasbordo=FALSE;
-		}
-
+		
 		//Si ya viajo 2 veces hoy, el boleto tendra valor normal
 		if($this->limitdia == TRUE ){
 			$valor*=2;
@@ -41,7 +31,17 @@ class MedioUniversitario extends  Tarjeta {
 			}
 		}
 		
-
+		if($this->checkUltViajeTrasbordo() == FALSE){
+			if ($this->checkTrasbordo($linea, $bandera)){
+				$valor = round($valor/=3, 2);
+				//Esta bandera se pone true para la proxima vez que intente pagar
+				$this->ultviajetrasbordo=TRUE;				
+			}
+		}
+		else{
+			$this->ultviajetrasbordo=FALSE;
+		}
+		
 		if($this->saldo>$valor && $this->viajep >= 0 && $this->viajep <= 2){
 			$this->saldo -= $valor * ($this->viajep+1);
 			$this->quitarplus( $this->viajep );
