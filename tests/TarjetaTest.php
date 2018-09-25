@@ -12,8 +12,8 @@ class TarjetaTest extends TestCase {
     public function testCargaSaldo() {
         $tiempo = new TiempoFalso();
         $tarjeta = new Tarjeta($tiempo);
-	$tarjeta2 = new Tarjeta($tiempo);
-	$this->assertTrue($tarjeta2->recargar(30.0));
+        $tarjeta2 = new Tarjeta($tiempo);
+        $this->assertTrue($tarjeta2->recargar(30.0));
         $this->assertEquals($tarjeta2->obtenerSaldo(), 30.0);
 
         $this->assertTrue($tarjeta->recargar(10.0));
@@ -22,7 +22,7 @@ class TarjetaTest extends TestCase {
         $this->assertTrue($tarjeta->recargar(20.0));
         $this->assertEquals($tarjeta->obtenerSaldo(), 30.0);
 	
-	$this->assertTrue($tarjeta->recargar(50.0));
+	    $this->assertTrue($tarjeta->recargar(50.0));
         $this->assertEquals($tarjeta->obtenerSaldo(), 80.0);
         $this->assertTrue($tarjeta->recargar(100.0));
         $this->assertEquals($tarjeta->obtenerSaldo(), 180.0);
@@ -30,12 +30,12 @@ class TarjetaTest extends TestCase {
         $this->assertEquals($tarjeta->obtenerSaldo(), 772.08);
         $this->assertTrue($tarjeta->recargar(962.59));
         $this->assertEquals($tarjeta->obtenerSaldo(),1956.25);
-	
-	$this->assertEquals($tarjeta->obtenerViajesplus(),0);
-      	$tarjeta->plus();
-	$this->assertEquals($tarjeta->obtenerViajesplus(),1);    
-      	$tarjeta->plus();
-	$this->assertEquals($tarjeta->obtenerViajesplus(),2); 
+        
+        $this->assertEquals($tarjeta->obtenerViajesplus(),0);
+        $tarjeta->plus();
+        $this->assertEquals($tarjeta->obtenerViajesplus(),1);    
+        $tarjeta->plus();
+        $this->assertEquals($tarjeta->obtenerViajesplus(),2); 
 	}
 
     /**
