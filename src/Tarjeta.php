@@ -150,8 +150,8 @@ class Tarjeta implements TarjetaInterface {
 			return false;
 		}
 
-		$this->$ultlinea = $linea;
 		$this->$ultbandera = $bandera;	
+		$this->$ultlinea = $linea;
 
 		return true;
 	}
