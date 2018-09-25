@@ -21,7 +21,7 @@ class MedioUniversitario extends  Tarjeta {
 		}
 		
 		//Si se realizo por lo menos un viaje desde que se creo la tarjeta
-		if($this->ultviaje != -300){
+		if($this->ultviaje != -5401){
 			if( $this->tiempo->time() - $this->ultviaje < 86400){
 				//Si ya viajo en el dia de la fecha, este viaje sera su ultimo a mitad de valor
 				$this->limitdia = TRUE;
