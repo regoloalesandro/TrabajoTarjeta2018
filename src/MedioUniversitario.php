@@ -11,7 +11,7 @@ class MedioUniversitario extends  Tarjeta {
 		
 		if($this->checkUltViajeTrasbordo() == FALSE){
 			if ($this->checkTrasbordo($linea, $bandera)){
-				$valor/=3;
+				$valor = round($valor/=3, 2);
 				//Esta bandera se pone true para la proxima vez que intente pagar
 				$this->ultviajetrasbordo=TRUE;				
 			}
