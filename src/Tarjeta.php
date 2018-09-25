@@ -73,33 +73,33 @@ class Tarjeta implements TarjetaInterface {
 
 		else{		
 			//Sábados de las 14 a 22 hs 
-			if( date('w', $this->obtenerTiempo()) == 6 ){
-				if( date('H', $this->obtenerTiempo())>=14 || date('H', $this->obtenerTiempo())<=22){
-					if($this->obtenerTiempo() - $this->ultviaje < 5400){
+			if( date('w', $this->tiempo->time()) == 6 ){
+				if( date('H', $this->tiempo->time())>=14 || date('H', $this->tiempo->time())<=22){
+					if($this->tiempo->time() - $this->ultviaje < 5400){
 						return TRUE;
 					}
 				}
 			}
 
 			//Domingos de 6 a 22 hs
-			elseif( date('w', $this->obtenerTiempo()) == 0 ){
-				if( date('H', $this->obtenerTiempo())>=6 || date('H', $this->obtenerTiempo())<=22){
-					if($this->obtenerTiempo() - $this->ultviaje < 5400){
+			elseif( date('w', $this->tiempo->time()) == 0 ){
+				if( date('H', $this->tiempo->time())>=6 || date('H', $this->tiempo->time())<=22){
+					if($this->tiempo->time() - $this->ultviaje < 5400){
 						return TRUE;
 					}
 				}
 			}
 
 			//Si es de noche entre las 22 y 6
-			elseif( date('H', $this->obtenerTiempo())>=22 || date('H', $this->obtenerTiempo())<=6){
-				if($this->obtenerTiempo() - $this->ultviaje < 5400){
+			elseif( date('H', $this->tiempo->time())>=22 || date('H', $this->tiempo->time())<=6){
+				if($this->tiempo->time() - $this->ultviaje < 5400){
 					return TRUE;
 				}
 			}
 
 			//Lunes a viernes de 6 a 22 y sábados de 6 a 14 hs
 			else{
-				if($this->obtenerTiempo() - $this->ultviaje < 3600){
+				if($this->tiempo->time() - $this->ultviaje < 3600){
 					return TRUE;
 				}
 			}
@@ -116,7 +116,7 @@ class Tarjeta implements TarjetaInterface {
 
 		if($this->checkUltViajeTrasbordo() == FALSE){
 			if ($this->checkTrasbordo($linea, $bandera)) $valor/=3;
-			
+
 			if($this->pasajeestandar != $valor){
 				$this->ultviajetrasbordo=TRUE;
 			}

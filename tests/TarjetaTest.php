@@ -54,8 +54,8 @@ class TarjetaTest extends TestCase {
         $medio = new MedioSecundario( $tiempo );
         $medio->recargar(100.0);
 
-        $medio->reducirSaldo(14.80, NULL, NULL);
-        $this->assertFalse($medio->reducirSaldo(14.80, NULL, NULL));
+        $medio->reducirSaldo(14.80, 'a', 1);
+        $this->assertFalse($medio->reducirSaldo(14.80, 'a', 1));
     }
 
     public function testMedioUniversitarioLimitacionDia(){
