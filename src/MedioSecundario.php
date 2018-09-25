@@ -54,8 +54,8 @@ class MedioSecundario extends  Tarjeta {
 			return false;
 		}
 
-		$this->$ultlinea = $linea;
-		$this->$ultbandera = $bandera;	
+		$this->ultlinea = $linea;
+		$this->ultbandera = $bandera;	
 		$this->ultviaje = $this->tiempo->time();
 
 		return true;
