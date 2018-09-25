@@ -150,6 +150,9 @@ class Tarjeta implements TarjetaInterface {
 			return false;
 		}
 
+		$this->$ultlinea = $linea;
+		$this->$ultbandera = $bandera;	
+
 		return true;
 	}
 
