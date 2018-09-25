@@ -3,12 +3,13 @@
 namespace TrabajoTarjeta;
 
 class MedioUniversitario extends  Tarjeta {
-	protected $ultviaje = -300;
 	protected $limitdia = FALSE;
 
-	public function reducirSaldo($valor){
+	public function reducirSaldo($valor, $linea, $bandera){
 		$this->pasajeestandar=$valor;
 		$valor/=2;
+		
+		
 		//Si ya viajo 2 veces hoy, el boleto tendra valor normal
 		if($this->limitdia == TRUE ){
 			$valor*=2;
@@ -20,7 +21,7 @@ class MedioUniversitario extends  Tarjeta {
 		}
 		
 		//Si se realizo por lo menos un viaje desde que se creo la tarjeta
-		if($this->ultviaje != -300){
+		if($this->ultviaje != -5401){
 			if( $this->tiempo->time() - $this->ultviaje < 86400){
 				//Si ya viajo en el dia de la fecha, este viaje sera su ultimo a mitad de valor
 				$this->limitdia = TRUE;
@@ -30,7 +31,17 @@ class MedioUniversitario extends  Tarjeta {
 			}
 		}
 		
-
+		if($this->checkUltViajeTrasbordo() == FALSE){
+			if ($this->checkTrasbordo($linea, $bandera)){
+				$valor = round($valor/=3, 2);
+				//Esta bandera se pone true para la proxima vez que intente pagar
+				$this->ultviajetrasbordo=TRUE;				
+			}
+		}
+		else{
+			$this->ultviajetrasbordo=FALSE;
+		}
+		
 		if($this->saldo>$valor && $this->viajep >= 0 && $this->viajep <= 2){
 			$this->saldo -= $valor * ($this->viajep+1);
 			$this->quitarplus( $this->viajep );
@@ -48,6 +59,8 @@ class MedioUniversitario extends  Tarjeta {
 			return false;
 		}
 
+		$this->ultlinea = $linea;
+		$this->ultbandera = $bandera;	
 		$this->ultviaje = $this->tiempo->time();
 
 		return true;

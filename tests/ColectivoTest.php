@@ -8,7 +8,7 @@ class ColectivoTest extends TestCase {
 
     public function testConSaldo() {
         $tiempo = new TiempoFalso();
-        $colectivo = new Colectivo(NULL, NULL, NULL);
+        $colectivo = new Colectivo('a', 'a', 1);
         $tarjeta = new Tarjeta( $tiempo );
         $tarjeta->recargar(100.0);
 
@@ -28,7 +28,7 @@ class ColectivoTest extends TestCase {
 	$this->assertEquals($boleto2->abonadoenviajesplus(),0);
         
         $jubi =new Jubilados($tiempo);
-	    $boleto3 = new Boleto ($jubi->valorpasaje(),$colectivo,$jubi, $jubi->obtenerID(), $colectivo->linea(), get_class($jubi), $jubi->obtenerViajesplusAbonados(), $jubi->valordelospasajesplus(), $tiempo);
+        $boleto3 = new Boleto ($jubi->valorpasaje(),$colectivo,$jubi, $jubi->obtenerID(), $colectivo->linea(), get_class($jubi), $jubi->obtenerViajesplusAbonados(), $jubi->valordelospasajesplus(), $tiempo);
         $this->assertEquals( $colectivo->pagarCon($jubi) , $boleto3);
 	
     }
@@ -65,9 +65,9 @@ class ColectivoTest extends TestCase {
     }
 
     public function testTiempo(){
-	 $tiempo = new TiempoReal();
-	 $tiempo2 = new TiempoFalso();
-         $this->assertTrue($tiempo->time()!==null);
-	 $this->assertEquals($tiempo2->reiniciar(),0);
-	}
+        $tiempo = new TiempoReal();
+        $tiempo2 = new TiempoFalso();
+        $this->assertTrue($tiempo->time()!==null);
+        $this->assertEquals($tiempo2->reiniciar(),0);
+        }
 }

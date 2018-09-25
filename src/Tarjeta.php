@@ -10,6 +10,11 @@ class Tarjeta implements TarjetaInterface {
 	protected $pasajeestandar;
 	protected $pasaje;
 	protected $tiempo;
+	
+	protected $ultviaje = -5401;
+	protected $ultviajetrasbordo = FALSE;
+	protected $ultlinea;
+	protected $ultbandera;
 
 	public function __construct($time) {
 		$this->saldo = 0.0;
@@ -61,8 +66,67 @@ class Tarjeta implements TarjetaInterface {
 		return $this->pasaje;
 	}
 
-	public function reducirSaldo($valor){
+	public function checkTrasbordo($linea, $bandera){
+		if($this->ultlinea == $linea && $this->ultbandera == $bandera){
+			return FALSE;
+		}
+
+		else{		
+			//Sábados de las 14 a 22 hs 
+			if( date('w', $this->tiempo->time()) == 6 ){
+				if( date('H', $this->tiempo->time())>=14 || date('H', $this->tiempo->time())<=22){
+					if($this->tiempo->time() - $this->ultviaje < 5400){
+						return TRUE;
+					}
+				}
+			}
+
+			//Domingos de 6 a 22 hs
+			elseif( date('w', $this->tiempo->time()) == 0 ){
+				if( date('H', $this->tiempo->time())>=6 || date('H', $this->tiempo->time())<=22){
+					if($this->tiempo->time() - $this->ultviaje < 5400){
+						return TRUE;
+					}
+				}
+			}
+
+			//Si es de noche entre las 22 y 6
+			elseif( date('H', $this->tiempo->time())>=22 || date('H', $this->tiempo->time())<=6){
+				if($this->tiempo->time() - $this->ultviaje < 5400){
+					return TRUE;
+				}
+			}
+
+			//Lunes a viernes de 6 a 22 y sábados de 6 a 14 hs
+			else{
+				if($this->tiempo->time() - $this->ultviaje < 3600){
+					return TRUE;
+				}
+			}
+
+		}
+	}
+
+	public function checkUltViajeTrasbordo(){
+		return $this->ultviajetrasbordo;
+	}
+
+	public function reducirSaldo($valor, $linea, $bandera){
 		$this->pasajeestandar=$valor;
+
+		if($this->checkUltViajeTrasbordo() == FALSE){
+			if ($this->checkTrasbordo($linea, $bandera)){
+				$valor = round($valor/=3, 2);
+				//Esta bandera se pone true para la proxima vez que intente pagar
+				$this->ultviajetrasbordo=TRUE;				
+			}
+		}
+		else{
+			$this->ultviajetrasbordo=FALSE;
+		}
+		
+
+
 		if($this->saldo>$valor&& $this->viajep ==0){
 			$this->saldo = $this->saldo - $valor;
 			$this->pasaje = $valor;
@@ -85,6 +149,9 @@ class Tarjeta implements TarjetaInterface {
 		elseif($this->viajep == 2){
 			return false;
 		}
+
+		$this->ultbandera = $bandera;	
+		$this->ultlinea = $linea;
 
 		return true;
 	}

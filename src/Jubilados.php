@@ -9,7 +9,7 @@ class Jubilados extends  Tarjeta {
 		return 0;
 	}
 
-	public function reducirSaldo($valor){
+	public function reducirSaldo($valor,$linea, $bandera){
       	return true;
 	}
 	
