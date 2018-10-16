@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/regoloalesandro/TrabajoTarjeta2018.svg?branch=master)](https://travis-ci.org/regoloalesandro/TrabajoTarjeta2018)
 [![Coverage Status](https://coveralls.io/repos/github/regoloalesandro/TrabajoTarjeta2018/badge.svg?branch=master)](https://coveralls.io/github/regoloalesandro/TrabajoTarjeta2018?branch=master)
-https://scrutinizer-ci.com/g/regoloalesandro/TrabajoTarjeta2018/badges/quality-score.png?b=master
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/regoloalesandro/TrabajoTarjeta2018/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/regoloalesandro/TrabajoTarjeta2018/?branch=master)
 # Trabajo Tarjeta: Versión 2018
 
 El siguiente trabajo es un enunciado iterativo. Todas las semanas nuevos
