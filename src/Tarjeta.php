@@ -102,9 +102,9 @@ class Tarjeta implements TarjetaInterface {
 				if($this->tiempo->time() - $this->ultviaje < 3600){
 					return TRUE;
 				}
-			}
-			return FALSE;
+			}			
 		}
+		return FALSE;
 	}
 
 	public function checkUltViajeTrasbordo(){
