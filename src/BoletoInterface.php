@@ -54,10 +54,4 @@ interface BoletoInterface {
      */
     public function viajesplus():
 
-    /**
-     * abonadoenviajesplus
-     * Devuelve el total correspondiente abonado en viajes plus ademas del boleto, si es -1 significa que pago con plus
-     * @return float
-     */
-    public function abonadoenviajesplus();
 }
