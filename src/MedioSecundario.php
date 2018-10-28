@@ -5,6 +5,15 @@ namespace TrabajoTarjeta;
 class MedioSecundario extends  Tarjeta {
 	protected $limitdia = FALSE;
 
+	/**
+	 * reducirSaldo
+	 * Reduce del saldo de la tarjeta el valor correspondiente  del pasaje
+	 * @param  float $valor
+	 * @param  int $linea
+	 * @param  mixed $bandera
+	 *
+	 * @return True/False
+	 */
 	public function reducirSaldo($valor, $linea, $bandera){
 		$this->pasajeestandar=$valor;
 		$valor/=2;
