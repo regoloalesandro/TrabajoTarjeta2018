@@ -46,15 +46,6 @@ interface TarjetaInterface {
 	 */
     public function checkTrasbordo($linea, $bandera);
     
-    /**
-	 * checkTrasbordo
-	 * Devuelve si se puede usar el trasbordo o no
-	 * @param  int $linea
-	 * @param  mixed $bandera
-	 *
-	 * @return true/false
-	 */
-    public function checkTrasbordo($linea, $bandera);
     
     /**
 	 * reducirSaldo
