@@ -54,13 +54,6 @@ interface BoletoInterface {
      */
     public function viajesplus():
 
-     /**
-     * obtenerfecha
-     * Devuelve la fecha en la que secreo el boleto
-     * @return int
-     */
-    public function obtenerfecha();
-
     /**
      * abonadoenviajesplus
      * Devuelve el total correspondiente abonado en viajes plus ademas del boleto, si es -1 significa que pago con plus
