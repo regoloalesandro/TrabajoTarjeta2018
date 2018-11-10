@@ -67,10 +67,6 @@ class TarjetaTest extends TestCase {
 
         $medio->reducirSaldo(14.80, 'a', 1);
         $this->assertFalse($medio->reducirSaldo(14.80, 'a', 1));
-	$this->assertTrue($medio2->reducirSaldo(14.80, 'a', 1));
-	$this->assertTrue($medio2->reducirSaldo(14.80, 'a', 1));
-	$this->assertTrue($medio2->reducirSaldo(14.80, 'a', 1));
-	$this->assertFalse($medio2->reducirSaldo(14.80, 'a', 1));
     }
 
     /**
