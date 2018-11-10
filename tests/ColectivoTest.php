@@ -10,7 +10,7 @@ class ColectivoTest extends TestCase {
      * testConSaldo
      * Testea que se pueda pagar un boleto con la tarjeta si es que tiene saldo la tarjeta
      * @return void
-     *
+     */
     public function testConSaldo() {
         $tiempo = new TiempoFalso();
         $colectivo = new Colectivo('a', 'a', 1);
@@ -43,7 +43,7 @@ class ColectivoTest extends TestCase {
      * Testea que se pueda pagar un boleto con una tarjeta que no tiene saldo, pero solo hasta 2 viajes plus y que luego
      * no le deje pagar mas
      * @return void
-     *
+     */
     public function testSinSaldo() {
         $tiempo = new TiempoFalso();
 
@@ -70,7 +70,7 @@ class ColectivoTest extends TestCase {
 	 * testFuncionesColectivo
 	 * Testea que las funciones de muestra de datos del colectivo funcionen correctamente
 	 * @return void
-	 *
+	 */
 	public function testFuncionesColectivo() {
         $linea=420;
 	$empresa="muni";
@@ -84,12 +84,12 @@ class ColectivoTest extends TestCase {
      * testTiempo
      * Testea que el objeto de control de tiempo funcione correctamente 
      * @return void
-     *
+     */
     public function testTiempo(){
         $tiempo = new TiempoReal();
         $tiempo2 = new TiempoFalso();
         $this->assertTrue($tiempo->time()!==null);
         $this->assertEquals($tiempo2->reiniciar(),0);
         }
-*/
+
 }
