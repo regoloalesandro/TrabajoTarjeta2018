@@ -124,7 +124,7 @@ class TarjetaTest extends TestCase {
         $this->assertEquals($colectivo->pagarCon($tarjeta)->obtenerValor(),14.8);
     }
 
-	public function testTrasbordo2(){
+	public function testTrasbordosabado(){
 	$tiempo = new TiempoFalso();
         $tarjeta = new Tarjeta($tiempo); // miercoles 0:00 pm
 
@@ -133,17 +133,16 @@ class TarjetaTest extends TestCase {
 
 	$colectivo = new Colectivo('a', 'a', 1);
         $colectivo2 = new Colectivo('b', 'b', 2);
-        $colectivo3 = new Colectivo('c', 'c', 3); 
         $tarjeta->recargar(100);		
-        
+        $tiempo->avanzar(259200);
         $this->assertEquals($colectivo->pagarCon($tarjeta)->obtenerValor(),14.8);
-
-        $tiempo->avanzar(3600);
-
-	$this->assertEquals(date("w", $tiempo->time()), 4);
-        $this->assertEquals(date("H", $tiempo->time()), 1);
-
-        $this->assertEquals($colectivo2->pagarCon($tarjeta)->obtenerValor(),14.8);
+	$this->assertEquals(date("w", $tiempo->time()), 6);
+        $this->assertEquals(date("H", $tiempo->time()), 0);
+	$tiempo->avanzar(2200);
+	$this->assertEquals(date("w", $tiempo->time()), 6);
+        $this->assertEquals(date("H", $tiempo->time()), 0);
+        $this->assertEquals($colectivo2->pagarCon($tarjeta)->obtenerValor(),4.93);
+	
 
    
     }
