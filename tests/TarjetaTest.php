@@ -69,6 +69,7 @@ class TarjetaTest extends TestCase {
         $this->assertFalse($medio->reducirSaldo(14.80, 'a', 1));
 	$this->assertTrue($medio2->reducirSaldo(14.80, 'a', 1));
 	$this->assertTrue($medio2->reducirSaldo(14.80, 'a', 1));
+	$this->assertTrue($medio2->reducirSaldo(14.80, 'a', 1));
 	$this->assertFalse($medio2->reducirSaldo(14.80, 'a', 1));
     }
 
@@ -94,6 +95,8 @@ class TarjetaTest extends TestCase {
         $tiempo->avanzar(500);
 
         $this->assertEquals( $colectivo->pagarCon($medio)->obtenerValor(), 14.80 );
+	$tiempo->avanzar(86400);
+	$this->assertEquals( $colectivo->pagarCon($medio)->obtenerValor(), 14.80 );
 
     }	
 	
