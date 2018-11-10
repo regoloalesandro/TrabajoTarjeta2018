@@ -201,12 +201,14 @@ class Tarjeta implements TarjetaInterface {
 			$this->saldo = $this->saldo - $this->pasajeestandar;
 			$this->pasaje = $this->pasajeestandar;
 			$this->viajesplusquepago= $this->viajep;
+			$this->ultviaje = $this->tiempo->time();
 		}
 		if($this->saldo>$valor&&$this->viajep!==0){
 			$this->saldo -= ($valor * ($this->viajep+1));
 			$this->pasaje = $valor *($this->viajep+1);
 			$this->viajesplusquepago= $this->viajep;
 			$this->quitarplus( $this->viajep );
+			$this->ultviaje = $this->tiempo->time();
 			
 		}
 
@@ -214,6 +216,7 @@ class Tarjeta implements TarjetaInterface {
 			$this->plus();
 			$this->pasaje =$valor;
 			$this->viajesplusquepago = -1;			
+			$this->ultviaje = $this->tiempo->time();
 		}
 
 		elseif($this->viajep == 2){

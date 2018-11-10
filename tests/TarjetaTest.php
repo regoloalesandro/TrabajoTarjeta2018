@@ -98,12 +98,12 @@ class TarjetaTest extends TestCase {
 	
 	public function testTrasbordo(){
 		$tiempo = new TiempoFalso();
-        $tarjeta = new Tarjeta($tiempo); //Se crea el 31 de diciembre de 1969, : miercoles 7:00 pm
+        $tarjeta = new Tarjeta($tiempo); // miercoles 0:00 pm
 
         $this->assertEquals(date("w", $tiempo->time()), 4);
         $this->assertEquals(date("H", $tiempo->time()), 0);
 
-	    $colectivo = new Colectivo('a', 'a', 1);
+	$colectivo = new Colectivo('a', 'a', 1);
         $colectivo2 = new Colectivo('b', 'b', 2);
          
         $tarjeta->recargar(100);		
@@ -112,7 +112,7 @@ class TarjetaTest extends TestCase {
 
         $tiempo->avanzar(3000);
 
-	    $this->assertEquals(date("w", $tiempo->time()), 4);
+	$this->assertEquals(date("w", $tiempo->time()), 4);
         $this->assertEquals(date("H", $tiempo->time()), 0);
 
         $this->assertEquals($colectivo2->pagarCon($tarjeta)->obtenerValor(),4.93);
@@ -124,6 +124,29 @@ class TarjetaTest extends TestCase {
         $this->assertEquals($colectivo->pagarCon($tarjeta)->obtenerValor(),14.8);
     }
 
+	public function testTrasbordo2(){
+	$tiempo = new TiempoFalso();
+        $tarjeta = new Tarjeta($tiempo); // miercoles 0:00 pm
+
+        $this->assertEquals(date("w", $tiempo->time()), 4);
+        $this->assertEquals(date("H", $tiempo->time()), 0);
+
+	$colectivo = new Colectivo('a', 'a', 1);
+        $colectivo2 = new Colectivo('b', 'b', 2);
+        $colectivo3 = new Colectivo('c', 'c', 3); 
+        $tarjeta->recargar(100);		
+        
+        $this->assertEquals($colectivo->pagarCon($tarjeta)->obtenerValor(),14.8);
+
+        $tiempo->avanzar(3600);
+
+	$this->assertEquals(date("w", $tiempo->time()), 4);
+        $this->assertEquals(date("H", $tiempo->time()), 1);
+
+        $this->assertEquals($colectivo2->pagarCon($tarjeta)->obtenerValor(),14.8);
+
+   
+    }
 		
 	
     /**
@@ -133,7 +156,7 @@ class TarjetaTest extends TestCase {
      */
     public function testJubilados(){
         $tiempo = new TiempoFalso();
-	    $valor=420.0;
+	$valor=420.0;
         $jubi =new Jubilados($tiempo);
 
         $this->assertEquals( $jubi->valorpasaje(), 0);
