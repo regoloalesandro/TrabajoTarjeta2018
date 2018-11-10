@@ -163,8 +163,8 @@ class Tarjeta implements TarjetaInterface {
 
 		if($this->checkUltViajeTrasbordo() == FALSE){
 			if ($this->checkTrasbordo($linea, $bandera)){
-				$valor = $valor/3;
-				$valor = round($valor, 2);
+				$this->pasajeestandar = $this->pasajeestandar/3;
+				$this->pasajeestandar = round($this->pasajeestandar, 2);
 				//Esta bandera se pone true para la proxima vez que intente pagar
 				$this->ultviajetrasbordo=TRUE;				
 			}
@@ -176,8 +176,8 @@ class Tarjeta implements TarjetaInterface {
 
 
 		if($this->saldo>$valor&& $this->viajep ==0){
-			$this->saldo = $this->saldo - $valor;
-			$this->pasaje = $valor;
+			$this->saldo = $this->saldo - $this->pasajeestandar;
+			$this->pasaje = $this->pasajeestandar;
 			$this->viajesplusquepago= $this->viajep;
 		}
 		if($this->saldo>$valor&&$this->viajep!==0){
