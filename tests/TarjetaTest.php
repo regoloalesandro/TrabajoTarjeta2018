@@ -6,12 +6,12 @@ use PHPUnit\Framework\TestCase;
 
 class TarjetaTest extends TestCase {
 
-
+	/*
     /**
      * testCargaSaldo
      * Comprueba que la tarjeta aumenta su saldo cuando se carga saldo válido.
      * @return void
-     */
+     *
     public function testCargaSaldo() {
         $tiempo = new TiempoFalso();
         $tarjeta = new Tarjeta($tiempo);
@@ -45,7 +45,7 @@ class TarjetaTest extends TestCase {
      * testCargaSaldoInvalido
      * Comprueba que la tarjeta no puede cargar saldos invalidos.
      * @return void
-     */
+     *
     public function testCargaSaldoInvalido() {
         $tiempo = new TiempoFalso();
         $tarjeta = new Tarjeta($tiempo);
@@ -58,7 +58,7 @@ class TarjetaTest extends TestCase {
      * testMedioSecundarioLimitacionTiempo
      * Comprueba el funcionamiento de la limitacion de tiempo en el medio boleto
      * @return void
-     */
+     *
     public function testMedioSecundarioLimitacionTiempo(){
         $tiempo = new TiempoFalso();
         $medio = new MedioSecundario( $tiempo );
@@ -72,7 +72,7 @@ class TarjetaTest extends TestCase {
      * testMedioUniversitarioLimitacionDia
      *  Comprueba el funcionamiento de la limitacion de tiempo en el medio boleto universitario
      * @return void
-     */
+     *
     public function testMedioUniversitarioLimitacionDia(){
         $tiempo = new TiempoFalso();
         $medio = new MedioUniversitario($tiempo);
@@ -92,6 +92,7 @@ class TarjetaTest extends TestCase {
         $this->assertEquals( $colectivo->pagarCon($medio)->obtenerValor(), 14.80 );
 
     }	
+	*/
 	public function testtrasbordo(){
 		$tiempo = new TiempoFalso();
         $tarjeta = new Tarjeta($tiempo); //Se crea el 31 de diciembre de 1969, : miercoles 7:00 pm
