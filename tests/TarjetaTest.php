@@ -147,7 +147,7 @@ class TarjetaTest extends TestCase {
    
     }
 
-	public function testTrasbordosabado(){
+	public function testTrasbordodomingo(){
 		$tiempo = new TiempoFalso();
 		$tarjeta = new Tarjeta($tiempo); // miercoles 0:00 pm
 
