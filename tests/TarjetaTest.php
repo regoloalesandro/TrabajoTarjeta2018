@@ -117,7 +117,7 @@ class TarjetaTest extends TestCase {
     }
 
 		
-	}
+	
     /**
      * testJubilados
      * Comprueba el funcionamiento de la tarjeta de jubilados
