@@ -6,8 +6,11 @@ use PHPUnit\Framework\TestCase;
 
 class TarjetaTest extends TestCase {
 
+
     /**
+     * testCargaSaldo
      * Comprueba que la tarjeta aumenta su saldo cuando se carga saldo válido.
+     * @return void
      */
     public function testCargaSaldo() {
         $tiempo = new TiempoFalso();
@@ -39,7 +42,9 @@ class TarjetaTest extends TestCase {
 	}
 
     /**
+     * testCargaSaldoInvalido
      * Comprueba que la tarjeta no puede cargar saldos invalidos.
+     * @return void
      */
     public function testCargaSaldoInvalido() {
         $tiempo = new TiempoFalso();
@@ -49,6 +54,11 @@ class TarjetaTest extends TestCase {
         $this->assertEquals($tarjeta->obtenerSaldo(), 0.0);
     }
 
+    /**
+     * testMedioSecundarioLimitacionTiempo
+     * Comprueba el funcionamiento de la limitacion de tiempo en el medio boleto
+     * @return void
+     */
     public function testMedioSecundarioLimitacionTiempo(){
         $tiempo = new TiempoFalso();
         $medio = new MedioSecundario( $tiempo );
@@ -58,6 +68,11 @@ class TarjetaTest extends TestCase {
         $this->assertFalse($medio->reducirSaldo(14.80, 'a', 1));
     }
 
+    /**
+     * testMedioUniversitarioLimitacionDia
+     *  Comprueba el funcionamiento de la limitacion de tiempo en el medio boleto universitario
+     * @return void
+     */
     public function testMedioUniversitarioLimitacionDia(){
         $tiempo = new TiempoFalso();
         $medio = new MedioUniversitario($tiempo);
@@ -77,6 +92,11 @@ class TarjetaTest extends TestCase {
         $this->assertEquals( $colectivo->pagarCon($medio)->obtenerValor(), 14.80 );
 
     }
+    /**
+     * testJubilados
+     * Comprueba el funcionamiento de la tarjeta de jubilados
+     * @return void
+     */
     public function testJubilados(){
         $tiempo = new TiempoFalso();
 	    $valor=420.0;

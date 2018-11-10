@@ -16,15 +16,35 @@ class Tarjeta implements TarjetaInterface {
 	protected $ultlinea;
 	protected $ultbandera;
 
+	/**
+	 * __construct
+	 * Funcion que construye el obejto tarjeta y le asigna valores a dicho objeto 
+	 * @param  int $time
+	 *
+	 * @return void
+	 */
 	public function __construct($time) {
 		$this->saldo = 0.0;
 		$this->tiempo = $time;
     }
 
+	/**
+	 * obtenerTiempo
+	 *
+	 * @return int
+	 */
 	public function obtenerTiempo(){
 		return $this->tiempo;
 	}
 
+    /**
+     * recargar
+     * Funcion que 
+     * @param  float $monto
+     *
+     * @return true/false
+	 * Devuelve true si se pudo cargar y false en el caso contrario
+     */
     public function recargar($monto) {
       // Esto  esta hecho bien a proposito  :P.
 		switch ($monto) {
@@ -62,10 +82,23 @@ class Tarjeta implements TarjetaInterface {
     public function obtenerSaldo() {
       return $this->saldo;
 	}
+	/**
+	 * valorpasaje
+	 * Devuelve cuanto salio el pasaje que pago
+	 * @return void
+	 */
 	public function valorpasaje(){
 		return $this->pasaje;
 	}
 
+	/**
+	 * checkTrasbordo
+	 * Devuelve si se puede usar el trasbordo o no
+	 * @param  int $linea
+	 * @param  mixed $bandera
+	 *
+	 * @return true/false
+	 */
 	public function checkTrasbordo($linea, $bandera){
 		if($this->ultlinea == $linea && $this->ultbandera == $bandera){
 			return FALSE;
@@ -107,10 +140,24 @@ class Tarjeta implements TarjetaInterface {
 		return FALSE;
 	}
 
+	/**
+	 * checkUltViajeTrasbordo
+	 * Devuelve el ultimo viaje en trasbordo
+	 * @return void
+	 */
 	public function checkUltViajeTrasbordo(){
 		return $this->ultviajetrasbordo;
 	}
 
+	/**
+	 * reducirSaldo
+	 * Recude el valor del pasaje del saldo de la tarjeta 
+	 * @param  float $valor
+	 * @param  int $linea
+	 * @param  mixed $bandera
+	 *
+	 * @return void
+	 */
 	public function reducirSaldo($valor, $linea, $bandera){
 		$this->pasajeestandar=$valor;
 
@@ -156,26 +203,58 @@ class Tarjeta implements TarjetaInterface {
 		return true;
 	}
 
+	/**
+	 * obtenerViajesplus
+	 * Devuelve la cantidad de viajes plus
+	 * @return int
+	 */
 	public function obtenerViajesplus(){
 		return $this->viajep;
 	}
 
+	/**
+	 * plus
+	 * Suma a la cantidad de viajes plus totales
+	 * @return void
+	 */
 	public function plus(){
 		$this->viajep += 1;
 	}
 
+	/**
+	 * quitarplus
+	 * Quita un viaje plus de la cantidad total
+	 * @param  int $cantidad
+	 *
+	 * @return void
+	 */
 	public function quitarplus($cantidad){
 		$this->viajep -= $cantidad;	
 	}
 
+	/**
+	 * obtenerID
+	 * Devuelve el id de la tarjeta
+	 * @return int
+	 */
 	public function obtenerID(){
 		return $this->id;
 	}
 
+	/**
+	 * obtenerViajesplusAbonados
+	 * Devuelve la cantidad de viajes plus abonados en un pago
+	 * @return int
+	 */
 	public function obtenerViajesplusAbonados(){
 		return $this->viajesplusquepago;
 	}
 
+	/**
+	 * valordelospasajesplus
+	 * Devuelve la cantdad que se abono en viajes plus
+	 * @return void
+	 */
 	public function valordelospasajesplus(){
 		if($this->viajesplusquepago>0){
 			return $this->pasajeestandar*$this->viajesplusquepago;

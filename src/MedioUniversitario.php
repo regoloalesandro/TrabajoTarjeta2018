@@ -5,6 +5,15 @@ namespace TrabajoTarjeta;
 class MedioUniversitario extends  Tarjeta {
 	protected $limitdia = FALSE;
 
+	/**
+	 * reducirSaldo
+	 * Reduce del saldo de la tarjeta el valor correspondiente del boleto
+	 * @param  float $valor
+	 * @param  int $linea
+	 * @param  mixed $bandera
+	 *
+	 * @return true/false
+	 */
 	public function reducirSaldo($valor, $linea, $bandera){
 		$this->pasajeestandar=$valor;
 		$valor/=2;
