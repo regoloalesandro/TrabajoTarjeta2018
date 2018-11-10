@@ -62,6 +62,7 @@ class TarjetaTest extends TestCase {
     public function testMedioSecundarioLimitacionTiempo(){
         $tiempo = new TiempoFalso();
         $medio = new MedioSecundario( $tiempo );
+	$medio2 = new MedioSecundario( $tiempo );
         $medio->recargar(100.0);
 
         $medio->reducirSaldo(14.80, 'a', 1);
@@ -90,10 +91,12 @@ class TarjetaTest extends TestCase {
         $tiempo->avanzar(500);
 
         $this->assertEquals( $colectivo->pagarCon($medio)->obtenerValor(), 14.80 );
+	$tiempo->avanzar(86400);
+	$this->assertEquals( $colectivo->pagarCon($medio)->obtenerValor(), 14.80 );
 
     }	
 	
-	public function testtrasbordo(){
+	public function testTrasbordo(){
 		$tiempo = new TiempoFalso();
         $tarjeta = new Tarjeta($tiempo); //Se crea el 31 de diciembre de 1969, : miercoles 7:00 pm
 

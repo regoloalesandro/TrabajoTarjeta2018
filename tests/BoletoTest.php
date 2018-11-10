@@ -103,5 +103,4 @@ class BoletoTest extends TestCase {
     }
 	
 
-
 }

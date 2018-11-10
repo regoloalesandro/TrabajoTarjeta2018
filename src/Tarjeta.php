@@ -108,7 +108,7 @@ class Tarjeta implements TarjetaInterface {
 		else{		
 			//Sábados de las 14 a 22 hs 
 			if( date('w', $this->tiempo->time()) == 6 ){
-				if( date('H', $this->tiempo->time())>=14 || date('H', $this->tiempo->time())<=22){
+				if( date('H', $this->tiempo->time())>=14 && date('H', $this->tiempo->time())<=22){
 					if($this->tiempo->time() - $this->ultviaje < 5400){
 					$this->pasajeestandar = $this->pasajeestandar/3;
 					$this->pasajeestandar = round($this->pasajeestandar, 2);
@@ -121,7 +121,7 @@ class Tarjeta implements TarjetaInterface {
 
 			//Domingos de 6 a 22 hs
 			elseif( date('w', $this->tiempo->time()) == 0 ){
-				if( date('H', $this->tiempo->time())>=6 || date('H', $this->tiempo->time())<=22){
+				if( date('H', $this->tiempo->time())>=6 && date('H', $this->tiempo->time())<=22){
 					if($this->tiempo->time() - $this->ultviaje < 5400){
 					$this->pasajeestandar = $this->pasajeestandar/3;
 					$this->pasajeestandar = round($this->pasajeestandar, 2);
