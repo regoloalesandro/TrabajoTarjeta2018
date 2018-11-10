@@ -94,12 +94,13 @@ class TarjetaTest extends TestCase {
     }	
 	public function testtrasbordo(){
 		$tiempo = new TiempoFalso();
-        $tarjeta = new Tarjeta($tiempo); //Se crea el 1 de enero de 1970: Jueves 00:00hs
+        $tarjeta = new Tarjeta($tiempo); //Se crea el 31 de diciembre de 1969, : miercoles 7:00 pm
+
 		$colectivo = new Colectivo('a', 'a', 1);
 		$tarjeta->recargar(100);		
 		$colectivo->pagarCon($tarjeta);
         $this->assertEquals($colectivo->pagarCon($tarjeta)->obtenerValor(),14.8);
-        $tiempo->avanzar(5000);
+        $tiempo->avanzar(3000);
         $colectivo->pagarCon($tarjeta);
         $this->assertEquals($colectivo->pagarCon($tarjeta)->obtenerValor(),4.9);
         $tiempo->avanzar(21200);
