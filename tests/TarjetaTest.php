@@ -66,6 +66,9 @@ class TarjetaTest extends TestCase {
 
         $medio->reducirSaldo(14.80, 'a', 1);
         $this->assertFalse($medio->reducirSaldo(14.80, 'a', 1));
+	$this->assertFalse($medio->reducirSaldo(14.80, 'a', 1));
+	$this->assertFalse($medio->reducirSaldo(14.80, 'a', 1));
+	$this->assertFalse($medio->reducirSaldo(14.80, 'a', 1));
     }
 
     /**
@@ -93,7 +96,7 @@ class TarjetaTest extends TestCase {
 
     }	
 	
-	public function testtrasbordo(){
+	public function testTrasbordo(){
 		$tiempo = new TiempoFalso();
         $tarjeta = new Tarjeta($tiempo); //Se crea el 31 de diciembre de 1969, : miercoles 7:00 pm
         $this->assertEquals(date("w", $tiempo->time()), 4);
