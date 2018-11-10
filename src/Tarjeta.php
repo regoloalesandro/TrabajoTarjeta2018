@@ -126,6 +126,8 @@ class Tarjeta implements TarjetaInterface {
 			//Si es de noche entre las 22 y 6
 			elseif( date('H', $this->tiempo->time())>=22 || date('H', $this->tiempo->time())<=6){
 				if($this->tiempo->time() - $this->ultviaje < 5400){
+				$this->pasajeestandar = $this->pasajeestandar/3;
+				$this->pasajeestandar = round($this->pasajeestandar, 2);
 					return TRUE;
 				}
 			}
@@ -163,8 +165,6 @@ class Tarjeta implements TarjetaInterface {
 
 		if($this->checkUltViajeTrasbordo() == FALSE){
 			if ($this->checkTrasbordo($linea, $bandera)){
-				$this->pasajeestandar = $this->pasajeestandar/3;
-				$this->pasajeestandar = round($this->pasajeestandar, 2);
 				//Esta bandera se pone true para la proxima vez que intente pagar
 				$this->ultviajetrasbordo=TRUE;				
 			}
