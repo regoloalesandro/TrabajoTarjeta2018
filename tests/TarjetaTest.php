@@ -98,19 +98,19 @@ class TarjetaTest extends TestCase {
 		$colectivo = new Colectivo('a', 'a', 1);
 		$tarjeta->recargar(100);		
 		$colectivo->pagarCon($tarjeta);
-        $this->assertEquals($tarjeta->obtenerSaldo(),85.2);
+        $this->assertEquals($colectivo->pagarCon($tarjeta)->obtenerValor(),14.8);
         $tiempo->avanzar(5000);
         $colectivo->pagarCon($tarjeta);
-        $this->assertEquals($tarjeta->obtenerSaldo(),80.27);
+        $this->assertEquals($colectivo->pagarCon($tarjeta)->obtenerValor(),4.9);
         $tiempo->avanzar(21200);
         $colectivo->pagarCon($tarjeta);
-        $this->assertEquals($tarjeta->obtenerSaldo(),65.47);
+        $this->assertEquals($colectivo->pagarCon($tarjeta)->obtenerValor(),14.8);
         $tiempo->avanzar(4000);
         $colectivo->pagarCon($tarjeta);
-        $this->assertEquals($tarjeta->obtenerSaldo(),50.67);
+        $this->assertEquals($colectivo->pagarCon($tarjeta)->obtenerValor(),4.9);
         $tiempo->avanzar(3000);
         $colectivo->pagarCon($tarjeta);
-        $this->assertEquals($tarjeta->obtenerSaldo(),45.74);
+        $this->assertEquals($$colectivo->pagarCon($tarjeta)->obtenerValor(),14.8);
     }
 
 		
