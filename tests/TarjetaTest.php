@@ -62,13 +62,14 @@ class TarjetaTest extends TestCase {
     public function testMedioSecundarioLimitacionTiempo(){
         $tiempo = new TiempoFalso();
         $medio = new MedioSecundario( $tiempo );
+	$medio2 = new MedioSecundario( $tiempo );
         $medio->recargar(100.0);
 
         $medio->reducirSaldo(14.80, 'a', 1);
         $this->assertFalse($medio->reducirSaldo(14.80, 'a', 1));
-	$this->assertFalse($medio->reducirSaldo(14.80, 'a', 1));
-	$this->assertFalse($medio->reducirSaldo(14.80, 'a', 1));
-	$this->assertFalse($medio->reducirSaldo(14.80, 'a', 1));
+	$this->assertTrue($medio2->reducirSaldo(14.80, 'a', 1));
+	$this->assertTrue($medio2->reducirSaldo(14.80, 'a', 1));
+	$this->assertFalse($medio2->reducirSaldo(14.80, 'a', 1));
     }
 
     /**
