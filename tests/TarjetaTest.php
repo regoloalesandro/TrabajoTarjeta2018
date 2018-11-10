@@ -95,7 +95,8 @@ class TarjetaTest extends TestCase {
 	public function testtrasbordo(){
 		$tiempo = new TiempoFalso();
         $tarjeta = new Tarjeta($tiempo); //Se crea el 31 de diciembre de 1969, : miercoles 7:00 pm
-
+        $this->assertEquals(date("w", $tiempo->tiempo()), 4);
+        $this->assertEquals(date("H", $tiempo->tiempo()), 0);
 		$colectivo = new Colectivo('a', 'a', 1);
 		$tarjeta->recargar(100);		
 		$colectivo->pagarCon($tarjeta);
