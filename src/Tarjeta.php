@@ -145,8 +145,7 @@ class Tarjeta implements TarjetaInterface {
 
 			//Lunes a viernes de 6 a 22 y sábados de 6 a 14 hs
 			else {
-				//La primera vez que viaje, el valor de ultviaje sera menor a 0, por lo tanto si intentamos restar, sumaremos, asi que trabajamos con el opuesto para evitar esto
-				if( $this->tiempo->time() - $this->ultviaje < 3600){
+				if( ($this->tiempo->time() - $this->ultviaje) <= 3600){
 					$this->pasajeestandar = $this->pasajeestandar/3;
 					$this->pasajeestandar = round($this->pasajeestandar, 2);
 					return TRUE;
