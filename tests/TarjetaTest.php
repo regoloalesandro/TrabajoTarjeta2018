@@ -120,8 +120,10 @@ class TarjetaTest extends TestCase {
         $tiempo->avanzar(21200);
         
         $colectivo->pagarCon($tarjeta);
-
+        
         $this->assertEquals($colectivo->pagarCon($tarjeta)->obtenerValor(),14.8);
+        $tiempo->avanzar(21200);
+        $this->assertEquals($colectivo2->pagarCon($tarjeta)->obtenerValor(),14.8);
     }
 
 	public function testTrasbordosabado(){
@@ -178,7 +180,7 @@ class TarjetaTest extends TestCase {
                 $tiempo->avanzar(2400);	
                 $this->assertEquals(date("w", $tiempo->time()), 4);
 		$this->assertEquals(date("H", $tiempo->time()), 10);	
-                $this->assertEquals($colectivo->pagarCon($tarjeta)->obtenerValor(),4.93);
+                $this->assertEquals($colectivo2->pagarCon($tarjeta)->obtenerValor(),4.93);
             }	
 			
 		
