@@ -133,7 +133,7 @@ class Tarjeta implements TarjetaInterface {
 			}
 
 			//Si es de noche entre las 22 y 6
-			elseif( date('H', $this->tiempo->time())>=22 && date('H', $this->tiempo->time())<=6){
+			elseif( date('H', $this->tiempo->time())>=22  || date('H', $this->tiempo->time())<=6){
 				if($this->tiempo->time() - $this->ultviaje < 5400){
 					$this->pasajeestandar = $this->pasajeestandar/3;
 					$this->pasajeestandar = round($this->pasajeestandar, 2);
