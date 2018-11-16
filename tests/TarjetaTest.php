@@ -165,7 +165,7 @@ class TarjetaTest extends TestCase {
 		$this->assertEquals(date("H", $tiempo->time()), 14);
 		$this->assertEquals($colectivo2->pagarCon($tarjeta)->obtenerValor(),4.93);
 	    }
-            public function testMedioUniversitarioLimitaciondia(){
+            public function testTrasbordodia(){
                 $tiempo = new TiempoFalso();
 		$tarjeta = new Tarjeta($tiempo); // miercoles 0:00 pm
                 $tiempo->avanzar(54000);
