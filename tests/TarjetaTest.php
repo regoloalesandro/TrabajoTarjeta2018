@@ -168,16 +168,16 @@ class TarjetaTest extends TestCase {
             public function testTrasbordodia(){
                 $tiempo = new TiempoFalso();
 		$tarjeta = new Tarjeta($tiempo); // miercoles 0:00 pm
-                $tiempo->avanzar(54000);
+                $tiempo->avanzar(36000);
 		$this->assertEquals(date("w", $tiempo->time()), 4);
-		$this->assertEquals(date("H", $tiempo->time()), 15);
+		$this->assertEquals(date("H", $tiempo->time()), 10);
 		$colectivo = new Colectivo('a', 'a', 1);
 		$colectivo2 = new Colectivo('b', 'b', 2);
 		$tarjeta->recargar(100);		
                 $this->assertEquals($colectivo->pagarCon($tarjeta)->obtenerValor(),14.8);
                 $tiempo->avanzar(2400);	
                 $this->assertEquals(date("w", $tiempo->time()), 4);
-		$this->assertEquals(date("H", $tiempo->time()), 15);	
+		$this->assertEquals(date("H", $tiempo->time()), 10);	
                 $this->assertEquals($colectivo->pagarCon($tarjeta)->obtenerValor(),4.93);
             }	
 			
