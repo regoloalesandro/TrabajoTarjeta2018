@@ -150,7 +150,8 @@ class Tarjeta implements TarjetaInterface {
 					$this->pasajeestandar = round($this->pasajeestandar, 2);
 					return TRUE;
 				}
-			}		
+			}
+			return false;		
 		}	
 	}
 
