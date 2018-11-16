@@ -187,9 +187,6 @@ class Tarjeta implements TarjetaInterface {
 			$this->ultviajetrasbordo=FALSE;
 		}
 
-		
-
-
 		if($this->saldo>$valor&& $this->viajep ==0){
 			$this->saldo = $this->saldo - $this->pasajeestandar;
 			$this->pasaje = $this->pasajeestandar;
