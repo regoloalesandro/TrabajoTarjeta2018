@@ -49,7 +49,8 @@ class ColectivoTest extends TestCase {
 
         $colectivo = new Colectivo(NULL, NULL, NULL);
         $tarjeta = new Tarjeta($tiempo);
-	$tarjeta = new Tarjeta($tiempo);
+        $tarjeta = new Tarjeta($tiempo);
+        $mediouni = new MedioUniversitario($tiempo);
 
         $boleto = new Boleto(14.80, $colectivo, $tarjeta, $tarjeta->obtenerID(), $colectivo->linea(), get_class($tarjeta),-1, -1, $tiempo);
         $this->assertEquals( $colectivo->pagarCon($tarjeta) , $boleto);
@@ -63,7 +64,10 @@ class ColectivoTest extends TestCase {
 	$tarjeta2 = new Tarjeta($tiempo);
         $colectivo->pagarCon($tarjeta2);
 	$colectivo->pagarCon($tarjeta2);
-	$this->assertFalse($colectivo->pagarCon($tarjeta2));
+        $this->assertFalse($colectivo->pagarCon($tarjeta2));
+        $colectivo->pagarCon($mediouni);
+        $colectivo->pagarCon($mediouni);
+        $this->assertFalse($colectivo->pagarCon($mediouni));
     
     }
 
