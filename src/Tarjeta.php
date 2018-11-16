@@ -152,8 +152,7 @@ class Tarjeta implements TarjetaInterface {
 					return TRUE;
 				}
 			}		
-		}
-		
+		}	
 	}
 
 	/**
