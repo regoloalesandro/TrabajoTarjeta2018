@@ -162,7 +162,7 @@ class TarjetaTest extends TestCase {
 		$this->assertEquals(date("H", $tiempo->time()), 14);
                 $tiempo->avanzar(2200);
 		$this->assertEquals(date("w", $tiempo->time()), 0);
-		$this->assertEquals(date("H", $tiempo->time()), 14);14.8
+		$this->assertEquals(date("H", $tiempo->time()), 14);
 		$this->assertEquals($colectivo2->pagarCon($tarjeta)->obtenerValor(),4.93);
 	    }
             public function testMedioUniversitarioLimitaciondia(){
