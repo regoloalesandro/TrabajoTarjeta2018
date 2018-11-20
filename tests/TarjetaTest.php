@@ -180,14 +180,14 @@ class TarjetaTest extends TestCase {
         $tiempo = new TiempoFalso();
 		$tarjeta = new Tarjeta($tiempo); // miercoles 0:00 pm 1 of enero
 		$this->assertEquals(date("w", $tiempo->time()), 4);
-		$this->assertEquals(date("H", $tiempo->time()), 10);
+		$this->assertEquals(date("H", $tiempo->time()), 00);
 		$colectivo = new Colectivo('a', 'a', 1);
 		$colectivo2 = new Colectivo('b', 'b', 2);
 		$tarjeta->recargar(100);		
         $this->assertEquals($colectivo->pagarCon($tarjeta)->obtenerValor(),14.8);
         $tiempo->avanzar(2400);	
         $this->assertEquals(date("w", $tiempo->time()), 4);
-		$this->assertEquals(date("H", $tiempo->time()), 10);	
+		$this->assertEquals(date("H", $tiempo->time()), 0);	
         $this->assertEquals($colectivo2->pagarCon($tarjeta)->obtenerValor(),4.93);
     }
   		
