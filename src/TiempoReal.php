@@ -7,7 +7,7 @@ class TiempoReal implements TiempoInterface{
     /**
      * time
      * devuelve la hora y fecha actual
-     * @return void
+     * @return Int
      */
     public function time(){
         return time();

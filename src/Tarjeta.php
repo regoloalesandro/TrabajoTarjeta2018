@@ -85,7 +85,7 @@ class Tarjeta implements TarjetaInterface {
 	/**
 	 * valorpasaje
 	 * Devuelve cuanto salio el pasaje que pago
-	 * @return void
+	 * @return float
 	 */
 	public function valorpasaje(){
 		return $this->pasaje;
@@ -168,7 +168,7 @@ class Tarjeta implements TarjetaInterface {
 	/**
 	 * checkUltViajeTrasbordo
 	 * Devuelve el ultimo viaje en trasbordo
-	 * @return void
+	 * @return int
 	 */
 	public function checkUltViajeTrasbordo(){
 		return $this->ultviajetrasbordo;
@@ -181,7 +181,7 @@ class Tarjeta implements TarjetaInterface {
 	 * @param  int $linea
 	 * @param  mixed $bandera
 	 *
-	 * @return void
+	 * @return bool
 	 */
 	public function reducirSaldo($valor, $linea, $bandera){
 		$this->pasajeestandar=$valor;
@@ -277,7 +277,7 @@ class Tarjeta implements TarjetaInterface {
 	/**
 	 * valordelospasajesplus
 	 * Devuelve la cantdad que se abono en viajes plus
-	 * @return void
+	 * @return float
 	 */
 	public function valordelospasajesplus(){
 		if($this->viajesplusquepago>0){
