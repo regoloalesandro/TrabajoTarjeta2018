@@ -44,8 +44,12 @@ class TiempoFalso implements TiempoInterface{
     public function reiniciar(){
         $this->time = 0;
     }
-	public function checkFeriado()
-    {
+    /**
+     * checkFeriado Verifica si la fecha del dia es un feriado dentro de la lista 
+     *
+     * @return void
+     */
+	public function checkFeriado(){
         $fecha = date('d-m', $this->time);
         $feriados = array(
             '01-01', //  Año Nuevo

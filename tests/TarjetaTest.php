@@ -96,6 +96,12 @@ class TarjetaTest extends TestCase {
 
     }	
 	
+    /**
+     * testTrasbordo  
+     * 
+     *  Comprueba si el funcionameniento de la limitacion del trasbordo durante la noche funciona
+     * @return void
+     */
     public function testTrasbordo(){
         $tiempo = new TiempoFalso();
         $tarjeta = new Tarjeta($tiempo); // miercoles 0:00 pm
@@ -123,6 +129,11 @@ class TarjetaTest extends TestCase {
         $this->assertEquals($colectivo2->pagarCon($tarjeta)->obtenerValor(),14.8);
     }
 
+	/**
+	 * testTrasbordosabado
+	 * Comprueba si el funcionamineto de la limitacion del pago del trasbordo el sabado funciona
+	 * @return void
+	 */
 	public function testTrasbordosabado(){
 	    $tiempo = new TiempoFalso();
         $tarjeta = new Tarjeta($tiempo); // miercoles 0:00 pm
@@ -143,6 +154,11 @@ class TarjetaTest extends TestCase {
         
         $this->assertEquals($colectivo2->pagarCon($tarjeta)->obtenerValor(),4.93);
     }
+	/**
+	 * testTrasbordodomingo
+	 * Comprueba si el funcionamineto de la limitacion del pago del trasbordo el domingo funciona
+	 * @return void
+	 */
 	public function testTrasbordodomingo(){
 		$tiempo = new TiempoFalso();
 		$tarjeta = new Tarjeta($tiempo); // miercoles 0:00 pm
@@ -160,6 +176,11 @@ class TarjetaTest extends TestCase {
 		$this->assertEquals(date("H", $tiempo->time()), 15);
 		$this->assertEquals($colectivo2->pagarCon($tarjeta)->obtenerValor(),4.93);
 	}
+    /**
+     * testTrasbordodia
+     * Comprueba si el funcionamineto de la limitacion del pago del trasbordo durante el dia funciona
+     * @return void
+     */
     public function testTrasbordodia(){
         $tiempo = new TiempoFalso();
 		$tarjeta = new Tarjeta($tiempo); // miercoles 0:00 pm
@@ -176,6 +197,11 @@ class TarjetaTest extends TestCase {
         $this->assertEquals($colectivo2->pagarCon($tarjeta)->obtenerValor(),4.93);
     }
 	
+    /**
+     * testTrasbordodiaferiado
+     * Comprueba si el funcionamineto de la limitacion del pago del trasbordo durante los dia feriados funciona
+     * @return void
+     */
     public function testTrasbordodiaferiado(){
         $tiempo = new TiempoFalso();
 		$tarjeta = new Tarjeta($tiempo); // miercoles 0:00 pm 1 of enero
