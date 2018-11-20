@@ -182,8 +182,8 @@ class TarjetaTest extends TestCase {
     public function testTrasbordodiaferiado(){
         $tiempo = new TiempoFalso();
 		$tarjeta = new Tarjeta($tiempo); // miercoles 0:00 pm 1 of enero
-		$this->assertEquals(date("w", $tiempo->time()), 4);
-		$this->assertEquals(date("H", $tiempo->time()), 10);
+		$this->assertEquals(date("w", $tiempo->time()), 5);
+		$this->assertEquals(date("H", $tiempo->time()), 00);
 		$colectivo = new Colectivo('a', 'a', 1);
 		$colectivo2 = new Colectivo('b', 'b', 2);
 		$tarjeta->recargar(100);		
