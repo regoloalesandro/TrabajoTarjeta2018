@@ -102,5 +102,4 @@ interface TarjetaInterface {
 	 */
 	public function valordelospasajesplus();
 	
-
 }
