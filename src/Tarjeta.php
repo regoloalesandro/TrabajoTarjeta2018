@@ -107,14 +107,14 @@ class Tarjeta implements TarjetaInterface {
 
 		else{		
 			if ($this->tiempo->checkFeriado()){
-			if( date('H', $this->tiempo->time())<=22  || date('H', $this->tiempo->time())>=6){
-				if($this->tiempo->time() - $this->ultviaje < 5400){
-					$this->pasajeestandar = $this->pasajeestandar/3;
-					$this->pasajeestandar = round($this->pasajeestandar, 2);
+				if( date('H', $this->tiempo->time())<=22  || date('H', $this->tiempo->time())>=6){
+					if($this->tiempo->time() - $this->ultviaje < 5400){
+						$this->pasajeestandar = $this->pasajeestandar/3;
+						$this->pasajeestandar = round($this->pasajeestandar, 2);
 									
-					return TRUE;
-				}
-			}	
+						return TRUE;
+					}
+				}	
 			}
 			//Sábados de las 14 a 22 hs 
 			if( date('w', $this->tiempo->time()) == 6 ){
