@@ -99,8 +99,8 @@ class TarjetaTest extends TestCase {
     public function testTrasbordo(){
         $tiempo = new TiempoFalso();
         $tarjeta = new Tarjeta($tiempo); // miercoles 0:00 pm
-
-        $this->assertEquals(date("w", $tiempo->time()), 4);
+		$tiempo->avanzar(86400);
+        $this->assertEquals(date("w", $tiempo->time()), 5);
         $this->assertEquals(date("H", $tiempo->time()), 0);
 
 	    $colectivo = new Colectivo('a', 'a', 1);
@@ -111,9 +111,6 @@ class TarjetaTest extends TestCase {
         $this->assertEquals($colectivo->pagarCon($tarjeta)->obtenerValor(),14.8);
 
         $tiempo->avanzar(3000);
-
-	    $this->assertEquals(date("w", $tiempo->time()), 4);
-        $this->assertEquals(date("H", $tiempo->time()), 0);
 
         $this->assertEquals($colectivo2->pagarCon($tarjeta)->obtenerValor(),4.93);
 
@@ -166,18 +163,34 @@ class TarjetaTest extends TestCase {
     public function testTrasbordodia(){
         $tiempo = new TiempoFalso();
 		$tarjeta = new Tarjeta($tiempo); // miercoles 0:00 pm
-        $tiempo->avanzar(36000);
+        $tiempo->avanzar(86400);
+		$this->assertEquals(date("w", $tiempo->time()), 5);
+		$this->assertEquals(date("H", $tiempo->time()), 0);
+		$colectivo = new Colectivo('a', 'a', 1);
+		$colectivo2 = new Colectivo('b', 'b', 2);
+		$tarjeta->recargar(100);		
+        $this->assertEquals($colectivo->pagarCon($tarjeta)->obtenerValor(),14.8);
+        $tiempo->avanzar(2400);	
+        $this->assertEquals(date("w", $tiempo->time()), 5);
+		$this->assertEquals(date("H", $tiempo->time()), 0);	
+        $this->assertEquals($colectivo2->pagarCon($tarjeta)->obtenerValor(),4.93);
+    }
+	
+    public function testTrasbordodiaferiado(){
+        $tiempo = new TiempoFalso();
+		$tarjeta = new Tarjeta($tiempo); // miercoles 0:00 pm 1 of enero
 		$this->assertEquals(date("w", $tiempo->time()), 4);
-		$this->assertEquals(date("H", $tiempo->time()), 10);
+		$this->assertEquals(date("H", $tiempo->time()), 00);
 		$colectivo = new Colectivo('a', 'a', 1);
 		$colectivo2 = new Colectivo('b', 'b', 2);
 		$tarjeta->recargar(100);		
         $this->assertEquals($colectivo->pagarCon($tarjeta)->obtenerValor(),14.8);
         $tiempo->avanzar(2400);	
         $this->assertEquals(date("w", $tiempo->time()), 4);
-		$this->assertEquals(date("H", $tiempo->time()), 10);	
+		$this->assertEquals(date("H", $tiempo->time()), 0);	
         $this->assertEquals($colectivo2->pagarCon($tarjeta)->obtenerValor(),4.93);
-    }		
+    }
+  		
      /**
      * testJubilados
      * Comprueba el funcionamiento de la tarjeta de jubilados
