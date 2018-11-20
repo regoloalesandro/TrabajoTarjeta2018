@@ -32,7 +32,7 @@ interface TarjetaInterface {
     /**
 	 * valorpasaje
 	 * Devuelve cuanto salio el pasaje que pago
-	 * @return void
+	 * @return float
 	 */
     public function valorpasaje();
 
@@ -42,7 +42,7 @@ interface TarjetaInterface {
 	 * @param  int $linea
 	 * @param  mixed $bandera
 	 *
-	 * @return true/false
+	 * @return bool
 	 */
     public function checkTrasbordo($linea, $bandera);
     
@@ -98,7 +98,7 @@ interface TarjetaInterface {
     /**
 	 * valordelospasajesplus
 	 * Devuelve la cantdad que se abono en viajes plus
-	 * @return void
+	 * @return float
 	 */
 	public function valordelospasajesplus();
 	

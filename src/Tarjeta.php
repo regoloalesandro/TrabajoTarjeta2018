@@ -81,15 +81,17 @@ class Tarjeta implements TarjetaInterface {
      */
     public function obtenerSaldo() {
       return $this->saldo;
-  }
-  /**
-   * valorpasaje
-   * Devuelve cuanto salio el pasaje que pago
-   * @return void
-   */
-  public function valorpasaje(){
-    return $this->pasaje;
-  }
+
+	}
+	/**
+	 * valorpasaje
+	 * Devuelve cuanto salio el pasaje que pago
+	 * @return float
+	 */
+	public function valorpasaje(){
+		return $this->pasaje;
+	}
+
 
   /**
    * checkTrasbordo
@@ -165,35 +167,37 @@ class Tarjeta implements TarjetaInterface {
     }	
   }
 
-  /**
-   * checkUltViajeTrasbordo
-   * Devuelve el ultimo viaje en trasbordo
-   * @return void
-   */
-  public function checkUltViajeTrasbordo(){
-    return $this->ultviajetrasbordo;
-  }
 
-  /**
-   * reducirSaldo
-   * Recude el valor del pasaje del saldo de la tarjeta 
-   * @param  float $valor
-   * @param  int $linea
-   * @param  mixed $bandera
-   *
-   * @return void
-   */
-  public function reducirSaldo($valor, $linea, $bandera){
-    $this->pasajeestandar=$valor;
-    if($this->checkUltViajeTrasbordo() == FALSE){
-      if ($this->checkTrasbordo($linea, $bandera)){
-        //Esta bandera se pone true para la proxima vez que intente pagar
-        $this->ultviajetrasbordo=TRUE;				
-      }
-    }
-    else{
-      $this->ultviajetrasbordo=FALSE;
-    }
+	/**
+	 * checkUltViajeTrasbordo
+	 * Devuelve el ultimo viaje en trasbordo
+	 * @return int
+	 */
+	public function checkUltViajeTrasbordo(){
+		return $this->ultviajetrasbordo;
+	}
+
+	/**
+	 * reducirSaldo
+	 * Recude el valor del pasaje del saldo de la tarjeta 
+	 * @param  float $valor
+	 * @param  int $linea
+	 * @param  mixed $bandera
+	 *
+	 * @return bool
+	 */
+	public function reducirSaldo($valor, $linea, $bandera){
+		$this->pasajeestandar=$valor;
+		if($this->checkUltViajeTrasbordo() == FALSE){
+			if ($this->checkTrasbordo($linea, $bandera)){
+				//Esta bandera se pone true para la proxima vez que intente pagar
+				$this->ultviajetrasbordo=TRUE;				
+			}
+		}
+		else{
+			$this->ultviajetrasbordo=FALSE;
+		}
+ 
 
     if($this->saldo>$valor&& $this->viajep ==0){
       $this->saldo = $this->saldo - $this->pasajeestandar;
@@ -274,20 +278,22 @@ class Tarjeta implements TarjetaInterface {
     return $this->viajesplusquepago;
   }
 
-  /**
-   * valordelospasajesplus
-   * Devuelve la cantdad que se abono en viajes plus
-   * @return void
-   */
-  public function valordelospasajesplus(){
-    if($this->viajesplusquepago>0){
-      return $this->pasajeestandar*$this->viajesplusquepago;
-    }
-    if($this->viajesplusquepago== 0){
-      return 0;
-    }
-    else{
-      return -1;
-    }
-  }
+
+	/**
+	 * valordelospasajesplus
+	 * Devuelve la cantdad que se abono en viajes plus
+	 * @return float
+	 */
+	public function valordelospasajesplus(){
+		if($this->viajesplusquepago>0){
+			return $this->pasajeestandar*$this->viajesplusquepago;
+		}
+		if($this->viajesplusquepago== 0){
+			return 0;
+		}
+		else{
+			return -1;
+		}
+	}
+
 }
