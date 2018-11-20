@@ -2,7 +2,7 @@
 
 namespace TrabajoTarjeta;
 
-class TiempoFalso implements TiempoInterface{
+class TiempoFalso implements TiempoInterface {
     protected $time;
 
     /**
@@ -12,7 +12,7 @@ class TiempoFalso implements TiempoInterface{
      *
      * @return void
      */
-    public function __construct($inicio = 0){
+    public function __construct($inicio = 0) {
         $this->time = $inicio;
     } 
 
@@ -23,7 +23,7 @@ class TiempoFalso implements TiempoInterface{
      *
      * @return void
      */
-    public function avanzar($segundos){
+    public function avanzar($segundos) {
         $this->time += $segundos;
     }
 
@@ -32,7 +32,7 @@ class TiempoFalso implements TiempoInterface{
      * devuelve el tiempo que lleva adentro
      * @return int
      */
-    public function time(){
+    public function time() {
         return $this->time;
     }
 
@@ -41,10 +41,10 @@ class TiempoFalso implements TiempoInterface{
      * devuelve el tiempo a 0
      * @return void
      */
-    public function reiniciar(){
+    public function reiniciar() {
         $this->time = 0;
     }
-	public function checkFeriado()
+  public function checkFeriado()
     {
         $fecha = date('d-m', $this->time);
         $feriados = array(
