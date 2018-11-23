@@ -50,27 +50,27 @@ class Tarjeta implements TarjetaInterface {
     switch ($monto) {
       case 10.0:
       $this->saldo += $monto;
-        return true;
+        return TRUE;
       case 20.0:
       $this->saldo += $monto;
-        return true;
+        return TRUE;
       case 30.0:
       $this->saldo += $monto;
-        return true;
+        return TRUE;
       case 50.0:
       $this->saldo += $monto;
-        return true;
+        return TRUE;
       case 100.0:
       $this->saldo += $monto;
-        return true;
+        return TRUE;
       case 510.15:
       $this->saldo += $monto + 81.93;
-        return true;
+        return TRUE;
       case 962.59:
       $this->saldo += $monto + 221.58;
-        return true;
+        return TRUE;
       default:
-        return false;
+        return FALSE;
     }
     }
 
@@ -88,7 +88,7 @@ class Tarjeta implements TarjetaInterface {
    * Devuelve cuanto salio el pasaje que pago
    * @return float
    */
-  public function valorpasaje(){
+  public function valorpasaje() {
     return $this->pasaje;
   }
 
@@ -163,7 +163,7 @@ class Tarjeta implements TarjetaInterface {
           return TRUE;
         }
       }
-      return false;		
+      return FALSE;		
     }	
   }
 
@@ -173,7 +173,7 @@ class Tarjeta implements TarjetaInterface {
    * Devuelve el ultimo viaje en trasbordo
    * @return int
    */
-  public function checkUltViajeTrasbordo(){
+  public function checkUltViajeTrasbordo() {
     return $this->ultviajetrasbordo;
   }
 
@@ -186,42 +186,42 @@ class Tarjeta implements TarjetaInterface {
    *
    * @return bool
    */
-  public function reducirSaldo($valor, $linea, $bandera){
-    $this->pasajeestandar=$valor;
-    if($this->checkUltViajeTrasbordo() == FALSE){
-      if ($this->checkTrasbordo($linea, $bandera)){
+  public function reducirSaldo($valor, $linea, $bandera) {
+    $this->pasajeestandar = $valor;
+    if ($this->checkUltViajeTrasbordo() == FALSE) {
+      if ($this->checkTrasbordo($linea, $bandera)) {
         //Esta bandera se pone true para la proxima vez que intente pagar
-        $this->ultviajetrasbordo=TRUE;				
+        $this->ultviajetrasbordo = TRUE;				
       }
     }
-    else{
-      $this->ultviajetrasbordo=FALSE;
+    else {
+      $this->ultviajetrasbordo = FALSE;
     }
  
 
-    if($this->saldo>$valor&& $this->viajep ==0){
+    if ($this->saldo > $valor && $this->viajep == 0) {
       $this->saldo = $this->saldo - $this->pasajeestandar;
       $this->pasaje = $this->pasajeestandar;
-      $this->viajesplusquepago= $this->viajep;
+      $this->viajesplusquepago = $this->viajep;
       $this->ultviaje = $this->tiempo->time();
     }
-    if($this->saldo>$valor&&$this->viajep!==0){
-      $this->saldo -= ($valor * ($this->viajep+1));
-      $this->pasaje = $valor *($this->viajep+1);
-      $this->viajesplusquepago= $this->viajep;
-      $this->quitarplus( $this->viajep );
+    if ($this->saldo > $valor && $this->viajep !== 0) {
+      $this->saldo -= ($valor * ($this->viajep + 1));
+      $this->pasaje = $valor * ($this->viajep + 1);
+      $this->viajesplusquepago = $this->viajep;
+      $this->quitarplus($this->viajep);
       $this->ultviaje = $this->tiempo->time();
 			
     }
 
-    if($this->saldo<$valor && $this->viajep <2){
+    if ($this->saldo < $valor && $this->viajep < 2) {
       $this->plus();
-      $this->pasaje =$valor;
+      $this->pasaje = $valor;
       $this->viajesplusquepago = -1;			
       $this->ultviaje = $this->tiempo->time();
     }
 
-    elseif($this->viajep == 2){
+    elseif ($this->viajep == 2) {
       return false;
     }
 
@@ -284,15 +284,15 @@ class Tarjeta implements TarjetaInterface {
    * Devuelve la cantdad que se abono en viajes plus
    * @return float
    */
-  public function valordelospasajesplus(){
-    if($this->viajesplusquepago>0){
-      return $this->pasajeestandar*$this->viajesplusquepago;
+  public function valordelospasajesplus() {
+    if ($this->viajesplusquepago > 0) {
+      return $this->pasajeestandar * $this->viajesplusquepago;
     }
-    if($this->viajesplusquepago== 0){
+    if ($this->viajesplusquepago == 0) {
       return 0;
     }
-    else{
-      return -1;
+    else {
+      return - 1;
     }
   }
 
