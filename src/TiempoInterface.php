@@ -2,7 +2,7 @@
 
 namespace TrabajoTarjeta;
 
-interface TiempoInterface{
+interface TiempoInterface {
     /**
      * time devuelve el tiempo tomado del reloj de la computadora
      *
