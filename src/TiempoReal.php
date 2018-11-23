@@ -2,14 +2,14 @@
 
 namespace TrabajoTarjeta;
 
-class TiempoReal implements TiempoInterface{
+class TiempoReal implements TiempoInterface {
     
     /**
      * time
      * devuelve la hora y fecha actual
      * @return Int
      */
-    public function time(){
+    public function time() {
         return time();
     }
     /**
@@ -17,7 +17,7 @@ class TiempoReal implements TiempoInterface{
      *
      * @return void
      */
-    public function checkFeriado(){
+    public function checkFeriado() {
         $fecha = date('d-m', $this->time);
         $feriados = array(
             '01-01', //  Año Nuevo
