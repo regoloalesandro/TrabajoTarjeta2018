@@ -50,7 +50,7 @@ class TiempoFalso implements TiempoInterface {
      *
      * @return void
      */
-  public function checkFeriado(){
+  public function checkFeriado() {
         $fecha = date('d-m', $this->time);
         $feriados = array(
             '01-01', //  Año Nuevo
